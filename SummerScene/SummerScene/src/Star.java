@@ -13,34 +13,18 @@ public class Star
 	public static final int orbitCX = 400;
 	public static final int orbitCY = 400;
 	public static final int orbitRadius = 500;
+	
 	public Star(int x, int y, Color c)
 	{
 		this.x = x;
 		this.y = y;
 		this.c = c;
 	}
-	public int getX()
-	{
-		return x;
-	}
-	public int getY()
-	{
-		return y;
-	}
-	public Color getColor()
-	{
-		return c;
-	}
-	public void setX(int x)
-	{
-		this.x = x;
-	}
-	public void setY(int y)
-	{
-		this.y = y;
-	}
-	public void setColor(Color c)
-	{
-		this.c = c;
-	}
+	
+	public int getX(){return x;}
+	public int getY(){return y;}
+	public Color getColor(){return c;}
+	public void setX(int x){this.x = x;}
+	public void setY(int y){this.y = y;}
+	public void setColor(Color c){this.c = c;}
 }

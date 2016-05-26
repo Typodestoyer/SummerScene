@@ -86,17 +86,6 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		frame.validate();
 	}
 	
-	
-	@Override
-	public void mouseExited(MouseEvent e)
-	{
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent e)
-	{
-		
-	}
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
@@ -125,18 +114,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 					terminal.repaint();
 					frame.validate();
 				}
-			}
+			}			
 		}
-	}
-	@Override
-	public void mousePressed(MouseEvent e)
-	{
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e)
-	{
-		
 	}
 	
 	@Override
@@ -152,12 +131,16 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		}
 	}
 	
-	
 	@Override
-	public void mouseDragged(MouseEvent e)
-	{
-		
-	}
+	public void mousePressed(MouseEvent e){}
+	@Override
+	public void mouseReleased(MouseEvent e){}
+	@Override
+	public void mouseDragged(MouseEvent e){}	
+	@Override
+	public void mouseExited(MouseEvent e){}
+	@Override
+	public void mouseEntered(MouseEvent e){}
 }
 
 /*CODE ARCHIVES

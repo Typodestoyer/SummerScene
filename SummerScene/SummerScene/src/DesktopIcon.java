@@ -33,32 +33,11 @@ public class DesktopIcon {
     	this.c = c;
     	this.text = text;
     }
-    public Polygon getPolygon()
-    {
-    	return p;
-    }
-    public Color getColor()
-    {
-    	return c;
-    }
-    public String getText()
-    {
-    	return text;
-    }
-    public int getX()
-    {
-    	return x;
-    }
-	public int getY()
-	{
-		return y;
-	}
-	public int getWidth()
-	{
-		return width;
-	}
-	public int getHeight()
-	{
-		return height;
-	}
+    public Polygon getPolygon(){return p;}
+    public Color getColor(){return c;}
+    public String getText(){return text;}
+    public int getX(){return x;}
+	public int getY(){return y;}
+	public int getWidth(){return width;}
+	public int getHeight(){return height;}
 }

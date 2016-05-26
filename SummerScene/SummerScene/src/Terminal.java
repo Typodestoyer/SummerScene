@@ -103,6 +103,7 @@ public class Terminal extends JPanel
 		jl.setVisible(true);
 		this.add(jl);
 	}
+	
 	public void processCurrentLine()
 	{
 		String line = textLines.get(textLines.size()-1);
@@ -111,12 +112,49 @@ public class Terminal extends JPanel
 			addNewLine("",true);
 			return;
 		}
+		String[] words = line.split(" ");
 		for(int i = 0; i < commands.size(); i ++)
 		{
-			if(commands.get(i).calls().contains(line))
+			if(commands.get(i).calls().contains(words[0]))
 			{
-				addNewLine(commands.get(i).response, false);
-				evalInput(i);
+				Command c = commands.get(i);
+				words = Arrays.copyOfRange(words, 1, words.length);
+				boolean eval = true;
+				while(c.sub().size() > 0)
+				{
+					if(words.length == 0 || words[0].equals("?") || words[0].equals("help"))
+					{
+						addNewLine("Commands for \'" + c.calls().get(0) + "\':", false );
+						help(c.sub());
+						eval = false;
+						break;
+					}
+					else
+					{
+						boolean broke = false;
+						for(int j = 0; j < c.sub().size(); j ++)
+						{
+							if(c.sub().get(j).calls().contains(words[0]))
+							{
+								c = c.sub().get(j);
+								words = Arrays.copyOfRange(words, 1, words.length);
+								broke = true;
+								break;
+							}
+						}
+						if(!broke)
+						{
+							addNewLine("Commands for \'" + c.calls().get(0) + "\':", false );
+							help(c.sub());
+							eval = false;
+							break;
+						}
+					}
+				}
+				if(eval)
+				{
+					evalInput(c, words);
+				}
 				addNewLine("",false);
 				addNewLine("",true);
 				return;
@@ -129,39 +167,90 @@ public class Terminal extends JPanel
 	
 	private void createNewResponses()
 	{
-		addResponse(new String[] {"help", "help!", "Help", "Help!"}, "", "You know how to use this ya doofus");
-		addResponse(new String[] {"ping", "Ping"}, "Pong!", "Back at ya!");
-		addResponse(new String[] {"what-is-love", "what is love?", "Love", "love"}, "Baby, don't hurt me", "What do you think this does? Cmon, you're smart.");
-		addResponse(new String[] {"hi", "Hi", "Hi!", "Hello", "Hello!", "hello"}, "Hi, how are you?", "Greets you");
-		addResponse(new String[] {"exit", "letmeout","aah"}, "Exiting...", "Lets you leave ;)");
+		addCommand(new Command(new String[] {"help", "help!", "Help", "Help!"}, "", "You know how to use this ya doofus"));
+		addCommand(new Command(new String[] {"ping", "Ping"}, "Pong!", "Back at ya!"));
+		addCommand(new Command(new String[] {"what-is-love", "what is love?", "Love", "love"}, "Baby, don't hurt me", "What do you think this does? Cmon, you're smart."));
+		addCommand(new Command(new String[] {"hi", "Hi", "Hi!", "Hello", "Hello!", "hello"}, "Hi, how are you?", "Greets you"));
+		addCommand(new Command(new String[] {"exit", "letmeout","aah"}, "Exiting...", "Lets you leave ;)"));
+		addCommand(new Command(new String[] {"test"}, "Tests multiword commands"));
+		addCommand(new Command(new String[] {"touch"}, "Creates new file"));
+		addCommand("test", new Command(new String[] {"this"}, "", "Tests this!", "test"));
+		addCommand("test this", new Command(new String[]{"functionality!"}, "Hello", "This works!", "test this"));
+		
 		Collections.sort(commands);
 	}
 	
-	private void help()
+	public void addCommand(Command c)
 	{
-		removeLine();
-		for(int i = 0; i < commands.size(); i ++)
+		commands.add(c);
+	}
+	
+	public void addCommand(String sourcePath, Command command)
+	{
+		if(sourcePath.equals(""))
 		{
-			addNewLine(commands.get(i).calls().get(0) + ": " + commands.get(i).help(), false);
+			commands.add(command);
+			return;
+		}
+		String[] commandNames = sourcePath.split(" ");
+		Command[] parentCommands = new Command[commandNames.length];
+		parentCommands[0] = find(commandNames[0], commands);
+		for(int i = 1; i < parentCommands.length; i ++)
+		{
+			parentCommands[i] = find(commandNames[i], parentCommands[i-1].sub());
+		}
+		parentCommands[parentCommands.length - 1].sub().add(command);
+	}
+	
+	public Command find(String call, ArrayList<Command> commandsToSearch)
+	{
+		for(Command c : commandsToSearch)
+		{
+			if(c.calls().contains(call))
+			{
+				return c;
+			}
+		}
+		return null;
+	}
+	private void help(ArrayList<Command> commandsToHelp)
+	{
+		for(Command c : commandsToHelp)
+		{
+			help(c);
 		}
 	}
 	
-	private void addResponse(String[] calls, String response, String help)
+	private void help(Command c)
 	{
-		commands.add(new Command(calls, response, help));
+		addNewLine(c.path + ": " + c.help(), false);
 	}
 	
-	private void evalInput(int index)
+	private void evalInput(Command c, String[] otherArgs)
 	{
-		switch(commands.get(index).calls().get(0))
+		String[] path = c.path().split(" ");
+		switch(path[0])
 		{
 			case "help":
-				help();
+				help(commands);
 				break;
 			case "exit":
 				exit = true;
 				break;
+			case "touch":
+				if(otherArgs.length == 0)
+				{
+					help(c);
+				}
+				else
+				{
+					addNewLine("File " + otherArgs[0] + " added!", false);
+					addFile(otherArgs[0]);	
+				}
+				break;
 			default:
+				System.out.println(c.path() + "/" + path[0] + "/");
+				addNewLine(c.response, false);
 		}
 	}
 	
