@@ -12,6 +12,18 @@
 				<path>src</path>
 			</folderitem>
 		</project>
+		<project>
+			<label>TetrisTake2</label>
+			<showfiles>false</showfiles>
+			<folderitem>
+				<path>TetrisTake2\classes</path>
+				<dir>classes</dir>
+			</folderitem>
+			<folderitem>
+				<path>TetrisTake2\src</path>
+				<dir>src</dir>
+			</folderitem>
+		</project>
 	</projects>
 	<open_files>
 		<docitem>
@@ -30,13 +42,61 @@
 			<path>src\Terminal.java</path>
 			<source>true</source>
 			<index>2</index>
-			<active>true</active>
+			<active>false</active>
 		</docitem>
 		<docitem>
 			<path>src\Command.java</path>
 			<source>true</source>
 			<index>3</index>
 			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\DesktopIcon.java</path>
+			<source>true</source>
+			<index>4</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\Folder.java</path>
+			<source>true</source>
+			<index>5</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\FileData.java</path>
+			<source>true</source>
+			<index>6</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\TextFile.java</path>
+			<source>true</source>
+			<index>7</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\Application.java</path>
+			<source>true</source>
+			<index>8</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\Solitaire.java</path>
+			<source>true</source>
+			<index>9</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\TetrisGame.java</path>
+			<source>true</source>
+			<index>10</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\ExeFile.java</path>
+			<source>true</source>
+			<index>11</index>
+			<active>true</active>
 		</docitem>
 	</open_files>
 </workspace_user>

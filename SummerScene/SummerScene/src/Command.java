@@ -1,5 +1,5 @@
 import java.util.*;
-public class Command implements Comparable
+public class Command implements Comparable<Command>
 {
 	String[] calls;
 	String response;
@@ -33,9 +33,8 @@ public class Command implements Comparable
 		this.path = path + " " + calls[0];
 	}
 	
-	public int compareTo(Object o)
+	public int compareTo(Command other)
 	{
-		Command other = (Command)(o);
 		return (calls().get(0).compareToIgnoreCase(other.calls().get(0)));
 	}
 	

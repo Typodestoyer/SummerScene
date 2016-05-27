@@ -31,19 +31,19 @@ public class Desktop extends JPanel{
     	for(DesktopIcon item : items)
     	{
     		g.setColor(item.getColor());
-    		g.fillPolygon(item.getPolygon());
+    		g.fillRect(item.getX(),item.getY(),item.getWidth(),item.getHeight());
     		g.setColor(Color.BLACK);
     		g.drawString(item.getText(), item.getX(), item.getY() + item.getHeight() + 15);
     	}
     }
     
-    public ArrayList<Polygon> getItems()
+    public ArrayList<Rectangle> getItems()
     {
-    	ArrayList<Polygon> polygons = new ArrayList<Polygon>();
+    	ArrayList<Rectangle> rectangles= new ArrayList<Rectangle>();
     	for(DesktopIcon item : items)
     	{
-    		polygons.add(item.getPolygon());
+    		rectangles.add(item.getRectangle());
     	}
-    	return polygons;
+    	return rectangles;
     }
 }

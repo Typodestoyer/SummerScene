@@ -12,12 +12,13 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	
 	public enum Scene
 	{
-		SUMMER, DESKTOP, TERMINAL
+		SUMMER, DESKTOP, TERMINAL, TETRIS
 	}
 	
 	String line;
 	JFrame frame;
 	Desktop desktop;
+	TetrisGame tetris = new TetrisGame();
 	
 	Terminal terminal;
 	Summer summer;
@@ -104,8 +105,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		{
 			for(int i = 0; i < desktop.getItems().size(); i ++)
 			{
-				Polygon p = desktop.getItems().get(i);
-				if(p.contains(e.getX()-8,e.getY()-30))
+				Rectangle r = desktop.getItems().get(i);
+				if(r.contains(e.getX()-8,e.getY()-30))
 				{
 					s = Scene.TERMINAL;
 					frame.remove(desktop);

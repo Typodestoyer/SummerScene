@@ -4,7 +4,7 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Terminal extends JPanel
+public class Terminal extends Application
 {
 	private final int TEXT_HEIGHT = 14;
 	ArrayList<JLabel> visTextLines = new ArrayList<JLabel>();
@@ -249,7 +249,6 @@ public class Terminal extends JPanel
 				}
 				break;
 			default:
-				System.out.println(c.path() + "/" + path[0] + "/");
 				addNewLine(c.response, false);
 		}
 	}
@@ -279,5 +278,10 @@ public class Terminal extends JPanel
 		{
 			return false;
 		}
+	}
+	
+	public void addFile(String name)
+	{
+		
 	}
 }

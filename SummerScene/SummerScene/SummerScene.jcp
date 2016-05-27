@@ -30,6 +30,10 @@
 				<path>src</path>
 			</folderitem>
 			<fileitem>
+				<path>src\Application.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Command.java</path>
 				<folder>src</folder>
 			</fileitem>
@@ -39,6 +43,22 @@
 			</fileitem>
 			<fileitem>
 				<path>src\DesktopIcon.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\ExeFile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\FileData.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Folder.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Solitaire.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
@@ -55,6 +75,14 @@
 			</fileitem>
 			<fileitem>
 				<path>src\Terminal.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\TetrisGame.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\TextFile.java</path>
 				<folder>src</folder>
 			</fileitem>
 		</include>

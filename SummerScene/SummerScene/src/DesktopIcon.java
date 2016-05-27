@@ -21,7 +21,7 @@ public class DesktopIcon {
 	int y;
 	int width;
 	int height;
-	Polygon p;
+	Rectangle r;
 	
     public DesktopIcon(int x, int y, int width, int height, Color c, String text)
     {
@@ -29,11 +29,11 @@ public class DesktopIcon {
     	this.y = y;
     	this.width = width;
     	this.height = height;
-    	this.p = new Polygon(new int[]{x,x+width,x+width,x}, new int[]{y,y,y+height,y+height},4);
+    	this.r = new Rectangle(x,y,width,height);
     	this.c = c;
     	this.text = text;
     }
-    public Polygon getPolygon(){return p;}
+    public Rectangle getRectangle(){return r;}
     public Color getColor(){return c;}
     public String getText(){return text;}
     public int getX(){return x;}

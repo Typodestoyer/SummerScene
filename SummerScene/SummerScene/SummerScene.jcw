@@ -13,5 +13,8 @@
 		<project>
 			<path>SummerScene.jcp</path>
 		</project>
+		<project>
+			<path>TetrisTake2\TetrisTake2.jcp</path>
+		</project>
 	</projects>
 </workspace>
