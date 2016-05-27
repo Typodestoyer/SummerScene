@@ -1,7 +1,0 @@
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Command.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Desktop.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\DesktopIcon.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Star.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Summer.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\SummerScene.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Terminal.java
