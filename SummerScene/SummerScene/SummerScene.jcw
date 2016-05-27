@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workspace>
+	<settings>
+		<label>SummerScene</label>
+	</settings>
+	<users>
+		<user>
+			<path>SummerScene.jcu</path>
+		</user>
+	</users>
+	<projects>
+		<project>
+			<path>SummerScene.jcp</path>
+		</project>
+		<project>
+			<path>TetrisTake2\TetrisTake2.jcp</path>
+		</project>
+	</projects>
+</workspace>
