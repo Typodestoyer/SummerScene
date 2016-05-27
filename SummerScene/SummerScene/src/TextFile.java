@@ -9,7 +9,9 @@
 
 public class TextFile extends FileData {
 
-    public TextFile() {
+    public TextFile()
+    {
+    	
     }
     
     

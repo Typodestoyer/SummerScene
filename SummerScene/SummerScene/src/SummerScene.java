@@ -37,7 +37,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	
     	terminal = new Terminal();
     	summer = new Summer();
-    	desktop = new Desktop();
+    	desktop = new Desktop(frame.getWidth(),frame.getHeight());
     	
     	frame.getContentPane().add(summer);
     	frame.setVisible(true);

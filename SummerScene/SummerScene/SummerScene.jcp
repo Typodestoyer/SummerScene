@@ -85,6 +85,10 @@
 				<path>src\TextFile.java</path>
 				<folder>src</folder>
 			</fileitem>
+			<fileitem>
+				<path>src\Thumbnail.java</path>
+				<folder>src</folder>
+			</fileitem>
 		</include>
 	</files>
 	<tasks/>

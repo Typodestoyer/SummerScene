@@ -13,31 +13,27 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
-public class DesktopIcon {
-	
-	Color c;
-	String text;
+public class DesktopIcon
+{
 	int x;
 	int y;
-	int width;
-	int height;
-	Rectangle r;
+	FileData file;
 	
-    public DesktopIcon(int x, int y, int width, int height, Color c, String text)
+    public DesktopIcon(int x, int y, FileData file)
     {
     	this.x = x;
     	this.y = y;
-    	this.width = width;
-    	this.height = height;
-    	this.r = new Rectangle(x,y,width,height);
-    	this.c = c;
-    	this.text = text;
+    	this.file = file;
     }
-    public Rectangle getRectangle(){return r;}
-    public Color getColor(){return c;}
-    public String getText(){return text;}
+    public String getName(){return file.getName();}
     public int getX(){return x;}
 	public int getY(){return y;}
-	public int getWidth(){return width;}
-	public int getHeight(){return height;}
+	public int getWidth(){return file.getThumbnail().getIconWidth();}
+	public int getHeight(){return file.getThumbnail().getIconHeight();}
+	public void draw(Container c, Graphics g, int x, int y)
+	{
+		file.getThumbnail().paintIcon(c,g,x,y);
+		g.setColor(Color.BLACK);
+		g.drawString(getName(),x,y+getHeight()+15);
+	}
 }

@@ -16,10 +16,6 @@
 			<label>TetrisTake2</label>
 			<showfiles>false</showfiles>
 			<folderitem>
-				<path>TetrisTake2\classes</path>
-				<dir>classes</dir>
-			</folderitem>
-			<folderitem>
 				<path>TetrisTake2\src</path>
 				<dir>src</dir>
 			</folderitem>
@@ -33,69 +29,51 @@
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Desktop.java</path>
+			<path>src\Terminal.java</path>
 			<source>true</source>
 			<index>1</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Terminal.java</path>
+			<path>src\TetrisGame.java</path>
 			<source>true</source>
 			<index>2</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Command.java</path>
+			<path>src\Folder.java</path>
 			<source>true</source>
 			<index>3</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\DesktopIcon.java</path>
+			<path>src\FileData.java</path>
 			<source>true</source>
 			<index>4</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Folder.java</path>
+			<path>src\TextFile.java</path>
 			<source>true</source>
 			<index>5</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\FileData.java</path>
+			<path>src\ExeFile.java</path>
 			<source>true</source>
 			<index>6</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\TextFile.java</path>
+			<path>src\Application.java</path>
 			<source>true</source>
 			<index>7</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Application.java</path>
+			<path>src\Desktop.java</path>
 			<source>true</source>
 			<index>8</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>src\Solitaire.java</path>
-			<source>true</source>
-			<index>9</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>src\TetrisGame.java</path>
-			<source>true</source>
-			<index>10</index>
-			<active>false</active>
-		</docitem>
-		<docitem>
-			<path>src\ExeFile.java</path>
-			<source>true</source>
-			<index>11</index>
 			<active>true</active>
 		</docitem>
 	</open_files>

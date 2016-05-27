@@ -8,9 +8,10 @@
 
 
 public class ExeFile extends FileData {
-
-    public ExeFile() {
-    }
+	public ExeFile()
+	{
+		super();
+	}
     
     
 }
