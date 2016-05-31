@@ -10,18 +10,16 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		SummerScene s = new SummerScene();
 	}
 	
-	public enum Scene
-	{
-		SUMMER, DESKTOP, TERMINAL, TETRIS
-	}
-	
 	String line;
 	JFrame frame;
 	Desktop desktop;
+	Terminal terminal = new Terminal();
 	TetrisGame tetris = new TetrisGame();
+	Solitaire solitaire = new Solitaire();
 	
-	Terminal terminal;
-	Summer summer;
+	
+	ArrayList<Application> apps = new ArrayList<Application>();
+	Summer summer = new Summer();
 	Scene s = Scene.SUMMER;
 	
 	public SummerScene()
@@ -34,10 +32,14 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	frame.addKeyListener(this);
     	frame.addMouseListener(this);
     	frame.addMouseMotionListener(this);
+    	apps.add(terminal);
+    	apps.add(tetris);
+    	apps.add(solitaire);
     	
-    	terminal = new Terminal();
-    	summer = new Summer();
-    	desktop = new Desktop(frame.getWidth(),frame.getHeight());
+    	
+    	desktop = new Desktop(frame.getWidth(),frame.getHeight(), apps);
+    	
+    	//Initializing computer stuff
     	
     	frame.getContentPane().add(summer);
     	frame.setVisible(true);
@@ -108,11 +110,25 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				Rectangle r = desktop.getItems().get(i);
 				if(r.contains(e.getX()-8,e.getY()-30))
 				{
-					s = Scene.TERMINAL;
 					frame.remove(desktop);
-					frame.add(terminal);
-					frame.repaint();
-					terminal.repaint();
+					s = desktop.getIcon(i).getScene();
+					switch(s)
+					{
+						case TERMINAL:
+							frame.add(terminal);
+							frame.repaint();
+							terminal.repaint();
+							break;
+						case TETRIS:
+							frame.add(tetris);
+							frame.repaint();
+							tetris.repaint();
+							break;
+						case SOLITAIRE:
+							break;
+						default:
+							
+					}
 					frame.validate();
 				}
 			}			

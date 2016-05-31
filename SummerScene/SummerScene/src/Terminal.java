@@ -11,14 +11,16 @@ public class Terminal extends Application
 	ArrayList<String> textLines = new ArrayList<String>();
 	ArrayList<Command> commands = new ArrayList<Command>();
 	boolean exit = false;
+	Desktop d;
 	public Terminal()
 	{
-		setLayout(null);
 		setBackground(Color.BLACK);
-		setOpaque(true);
 		addNewLine("", true);
 		createNewResponses();
 	}
+	public void setDesktop(Desktop d){this.d = d;}
+	public Scene getScene(){return Scene.TERMINAL;}
+	
 	protected void paintComponent(Graphics g)
 	{
 		this.removeAll();

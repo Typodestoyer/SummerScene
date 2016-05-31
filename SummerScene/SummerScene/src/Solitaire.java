@@ -17,5 +17,5 @@ public class Solitaire extends Application
     public Solitaire() {
     }
     
-    
+    public Scene getScene(){return Scene.SOLITAIRE;}
 }

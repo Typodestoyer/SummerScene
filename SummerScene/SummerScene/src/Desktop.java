@@ -16,31 +16,50 @@ public class Desktop extends JPanel{
 
 	Color backgroundColor = new Color(119,181,254);
 	ArrayList<DesktopIcon> items = new ArrayList<DesktopIcon>();
+	FileType type = FileType.GEN;
 	ArrayList<Color> colors = new ArrayList<Color>();
 	ArrayList<Polygon> shapes = new ArrayList<Polygon>();
+	ArrayList<Application> apps;
+	Terminal t = new Terminal();
     int xLoc = 20, yLoc = 20;
+    
+    public enum FileType
+    {
+    	EXE, TXT, GEN
+    }
+    
     public Desktop()
     {
     }
-    public Desktop(int width, int height)
+    public Desktop(int width, int height, ArrayList<Application> apps)
     {
 		setLayout(null);
 		setBackground(backgroundColor);
 		setOpaque(true);
 		setSize(new Dimension(width, height));
+		this.apps = apps;
 		
+		type = FileType.EXE;
 		colors.add(Color.BLACK);
 		shapes.add(new Polygon(new int[]{0,0,60,60},new int[]{0,45,45,0},4));
-		addItem(xLoc,yLoc,"Terminal",60,45);
+		addItem(xLoc,yLoc,"Terminal",60,45, colors, shapes, apps.remove(0));
+    	colors = new ArrayList<Color>();
+    	shapes = new ArrayList<Polygon>();
 		
+		type = FileType.EXE;
 		colors.add(Color.BLACK);
-		shapes.add(new Polygon(new int[]{0,0,60,60},new int[]{0,45,45,0},4));
-		addItem(xLoc,yLoc,"Terminal",60,45);
+		colors.add(Color.GREEN);
+		shapes.add(new Polygon(new int[]{0,0,45,45},new int[]{0,60,60,0},4));
+		shapes.add(new Polygon(new int[]{0,0,45,45,40,40,5,5,40,45}, new int[]{0,60,60,0,5,55,55,5,5,0},10));
+		addItem(xLoc,yLoc,"Tetris",45,60, colors, shapes, apps.remove(0));
+    	colors = new ArrayList<Color>();
+    	shapes = new ArrayList<Polygon>();
     	
     }
     @Override
     protected void paintComponent(Graphics g)
     {
+    	int i = 0;
 		g.setColor(backgroundColor);
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
     	int xLoc = 20, yLoc = 20;
@@ -66,16 +85,32 @@ public class Desktop extends JPanel{
     	return rectangles;
     }
     
-    public void addItem(int x, int y, String name, int width, int height)
+    public void addTextFile(int x, int y, String name)
     {
-    	items.add(new DesktopIcon(x, y, new FileData(name, new Thumbnail(width,height,colors,shapes))));
-    	colors = new ArrayList<Color>();
-    	shapes = new ArrayList<Polygon>();
+    	items.add(new DesktopIcon(x, y, new TextFile(name)));
+    }
+    
+    public void addItem(int x, int y, String name, int width, int height, ArrayList<Color> colors, ArrayList<Polygon> shapes, Application app)
+    {
+    	if(type == FileType.EXE)
+    	{
+    		items.add(new DesktopIcon(x, y, new ExeFile(name, new Thumbnail(width,height,colors,shapes), app)));
+    	}
+    	else
+    	{
+    		
+    	}
     	xLoc += 100;
     	if(xLoc > this.getWidth() - 100)
     	{
     		xLoc = 20;
     		yLoc += 100;
     	}
+    	type = FileType.GEN;
+    }
+    
+    public DesktopIcon getIcon(int i)
+    {
+    	return items.get(i);
     }
 }

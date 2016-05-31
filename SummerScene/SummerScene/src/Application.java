@@ -11,10 +11,13 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Application extends JPanel {
+public abstract class Application extends JPanel {
 	
-    public Application() {
+    public Application()
+    {
+    	setLayout(null);
+		setOpaque(true);
     }
     
-    
+    public abstract Scene getScene();
 }

@@ -5,6 +5,7 @@ E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\DesktopIcon.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\ExeFile.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\FileData.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Folder.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Scene.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Solitaire.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Star.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Summer.java

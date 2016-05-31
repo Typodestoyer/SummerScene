@@ -28,8 +28,10 @@ public class DesktopIcon
     public String getName(){return file.getName();}
     public int getX(){return x;}
 	public int getY(){return y;}
+	public Scene getScene(){return file.getScene();}
 	public int getWidth(){return file.getThumbnail().getIconWidth();}
 	public int getHeight(){return file.getThumbnail().getIconHeight();}
+	public Application getApp(){return file.getApp();}
 	public void draw(Container c, Graphics g, int x, int y)
 	{
 		file.getThumbnail().paintIcon(c,g,x,y);

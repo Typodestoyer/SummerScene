@@ -8,10 +8,21 @@
 
 
 public class ExeFile extends FileData {
+	
 	public ExeFile()
 	{
-		super();
+		
 	}
-    
+	
+	public ExeFile(String name, Thumbnail pic)
+	{
+		super(name, pic);
+		app = new TetrisGame();
+	}
+	
+	public ExeFile(String name, Thumbnail pic, Application app)
+	{
+		super(name, pic, app);
+	}    
     
 }

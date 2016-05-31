@@ -8,11 +8,18 @@
 
 
 public class TextFile extends FileData {
-
     public TextFile()
     {
     	
     }
     
+    public TextFile(String name)
+    {
+    	super(name);
+    }
     
+    public Scene getScene()
+    {
+    	return Scene.TEXT_EDITOR;
+    }
 }
