@@ -3,17 +3,14 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
-public class SummerScene extends KeyAdapter implements MouseListener, MouseMotionListener
+
+public class SummerScene extends FocusTraversalPolicy
 {
 	public static void main (String[] args)
 	{
-		SummerScene s = new SummerScene();
+		SummerScene mainScene = new SummerScene();
 	}
 	
-	public enum Scene
-	{
-		SUMMER, DESKTOP, TERMINAL, TETRIS
-	}
 	
 	String line;
 	JFrame frame;
@@ -31,9 +28,9 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	frame.setSize(700, 600);
     	frame.setPreferredSize(new Dimension(700, 600));
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frame.addKeyListener(this);
-    	frame.addMouseListener(this);
-    	frame.addMouseMotionListener(this);
+    	InputDetector input = new InputDetector();
+    	frame.addMouseListener(input);
+    	frame.addKeyListener(input);
     	
     	terminal = new Terminal();
     	summer = new Summer();
@@ -43,7 +40,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	frame.setVisible(true);
     	
 	}
-	
+	/*
 	public void keyTyped(KeyEvent e)
 	{
 		if(s == Scene.TERMINAL)
@@ -85,8 +82,49 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 			}
 		}
 		frame.validate();
+	}*/
+	
+	private class InputDetector extends KeyAdapter implements MouseListener
+	{
+		Scene upcomingScene = Scene.SUMMER;
+		private void updateUpcomingScene()
+		{
+			System.out.println("Checking for updates!");
+			switch(s)
+			{
+				case SUMMER:
+					upcomingScene = summer.upcomingScene();
+					break;
+				case DESKTOP:
+					upcomingScene = desktop.upcomingScene();
+					break;
+				case TERMINAL:
+					upcomingScene = terminal.upcomingScene();
+					break;
+				case TETRIS:
+					upcomingScene = tetris.upcomingScene();
+					break;
+				
+			}
+		}
+		@Override
+		public void mouseClicked(MouseEvent e){updateUpcomingScene();}
+		@Override
+		public void keyTyped(KeyEvent e){
+			if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE || e.getKeyChar() == '\n')
+				updateUpcomingScene();
+		}
+		@Override
+		public void mouseReleased(MouseEvent e){}
+		@Override
+		public void mousePressed(MouseEvent e){}
+		@Override
+		public void mouseEntered(MouseEvent e){}
+		@Override
+		public void mouseExited(MouseEvent e){}
 	}
 	
+	/*
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
@@ -142,6 +180,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	public void mouseExited(MouseEvent e){}
 	@Override
 	public void mouseEntered(MouseEvent e){}
+	*/
 }
 
 /*CODE ARCHIVES

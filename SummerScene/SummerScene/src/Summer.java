@@ -4,8 +4,9 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Summer extends JPanel implements ActionListener
+public class Summer extends JPanel implements ActionListener, MouseListener, MouseMotionListener, NextScene
 {
+	private Scene sceneSwitch = Scene.SUMMER;
 	
 	//WINDOW
 	private static final int WY = 25;	//Y OF UPPER LEFT
@@ -190,11 +191,20 @@ public class Summer extends JPanel implements ActionListener
 	
 	public Summer()
 	{
+		//setFocusable(true);
+		//requestFocusInWindow();
+		//addMouseListener(this);
+		//addMouseMotionListener(this);
 		t = new javax.swing.Timer(25,this);
 		t.setInitialDelay(200);
 		t.start();
 		sun = new Star(0,0,SSC);
 		moon = new Star(100,0,SMC);
+	}
+	
+	public Scene upcomingScene()
+	{
+		return sceneSwitch;
 	}
 	
 	public Polygon getComputer()
@@ -448,4 +458,47 @@ public class Summer extends JPanel implements ActionListener
 		}
 		return c;
 	}
+	
+	
+	
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		if(computer.contains(e.getX(),e.getY()))
+		{
+			unhighlight();
+			setOpaque(false);
+			setVisible(false);
+			sceneSwitch = Scene.DESKTOP;
+			repaint();
+			
+		}
+	}
+	
+	
+	
+	@Override
+	public void mouseMoved(MouseEvent e)
+	{
+		if(computer.contains(e.getX(),e.getY()))
+		{
+			highlight();
+		}
+		else
+		{
+			unhighlight();
+		}
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e){}
+	@Override
+	public void mouseReleased(MouseEvent e){}
+	@Override
+	public void mouseDragged(MouseEvent e){}	
+	@Override
+	public void mouseExited(MouseEvent e){}
+	@Override
+	public void mouseEntered(MouseEvent e){}
+	
 }

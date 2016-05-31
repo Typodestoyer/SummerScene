@@ -12,8 +12,9 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Desktop extends JPanel{
-
+public class Desktop extends JPanel implements NextScene{
+	
+	Scene sceneSwitch = Scene.DESKTOP;
 	Color backgroundColor = new Color(119,181,254);
 	ArrayList<DesktopIcon> items = new ArrayList<DesktopIcon>();
 	ArrayList<Color> colors = new ArrayList<Color>();
@@ -38,6 +39,8 @@ public class Desktop extends JPanel{
 		addItem(xLoc,yLoc,"Terminal",60,45);
     	
     }
+    @Override
+    public Scene upcomingScene(){return sceneSwitch;}
     @Override
     protected void paintComponent(Graphics g)
     {
