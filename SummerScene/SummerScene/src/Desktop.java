@@ -42,7 +42,7 @@ public class Desktop extends JPanel{
 		type = FileType.EXE;
 		colors.add(Color.BLACK);
 		shapes.add(new Polygon(new int[]{0,0,60,60},new int[]{0,45,45,0},4));
-		addItem(xLoc,yLoc,"Terminal",60,45, colors, shapes, apps.remove(0));
+		addItem("Terminal",60,45, colors, shapes, apps.remove(0));
     	colors = new ArrayList<Color>();
     	shapes = new ArrayList<Polygon>();
 		
@@ -51,7 +51,7 @@ public class Desktop extends JPanel{
 		colors.add(Color.GREEN);
 		shapes.add(new Polygon(new int[]{0,0,45,45},new int[]{0,60,60,0},4));
 		shapes.add(new Polygon(new int[]{0,0,45,45,40,40,5,5,40,45}, new int[]{0,60,60,0,5,55,55,5,5,0},10));
-		addItem(xLoc,yLoc,"Tetris",45,60, colors, shapes, apps.remove(0));
+		addItem("Tetris",45,60, colors, shapes, apps.remove(0));
     	colors = new ArrayList<Color>();
     	shapes = new ArrayList<Polygon>();
     	
@@ -85,16 +85,22 @@ public class Desktop extends JPanel{
     	return rectangles;
     }
     
-    public void addTextFile(int x, int y, String name)
+    public void addTextFile(String name, String[] contents)
     {
-    	items.add(new DesktopIcon(x, y, new TextFile(name)));
+    	items.add(new DesktopIcon(xLoc, yLoc, new TextFile(name,contents)));
+    	xLoc += 100;
+    	if(xLoc > this.getWidth() - 100)
+    	{
+    		xLoc = 20;
+    		yLoc += 100;
+    	}
     }
     
-    public void addItem(int x, int y, String name, int width, int height, ArrayList<Color> colors, ArrayList<Polygon> shapes, Application app)
+    public void addItem(String name, int width, int height, ArrayList<Color> colors, ArrayList<Polygon> shapes, Application app)
     {
     	if(type == FileType.EXE)
     	{
-    		items.add(new DesktopIcon(x, y, new ExeFile(name, new Thumbnail(width,height,colors,shapes), app)));
+    		items.add(new DesktopIcon(xLoc, yLoc, new ExeFile(name, new Thumbnail(width,height,colors,shapes), app)));
     	}
     	else
     	{

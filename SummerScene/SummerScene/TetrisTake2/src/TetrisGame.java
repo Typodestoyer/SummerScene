@@ -64,6 +64,9 @@ public class TetrisGame extends JPanel implements KeyListener, ActionListener{
 	private int speed = BASETIMEDELAY;
 	//Number of ms between times that the piece descends
 	private static final Color BORDER_COLOR = new Color(0,102,0);
+	public TetrisGame()
+	{
+	}
 	public void run()
 	{
 		//JPanel CopyPaste
@@ -128,8 +131,10 @@ public class TetrisGame extends JPanel implements KeyListener, ActionListener{
 	    		repaint();
  	   		}
  	   		//Here goes 
-		} while ((replay == 'y') || (replay == 'Y'));		
+		} while ((replay == 'y') || (replay == 'Y'));
+		System.out.println("GG");		
     	//SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), 0x0F );
+    	repaint();
 		
 	}
 	
@@ -137,15 +142,27 @@ public class TetrisGame extends JPanel implements KeyListener, ActionListener{
 	{
 		g.setColor(Color.BLACK);
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
-		//Draws physical board
-		for (int x = 0; x < WIDTH + 9; x ++)
+		if(gameOver == true)
 		{
-   		 	for (int y = 0; y < HEIGHT + 2; y ++)
- 		   	{
-    			drawSquare(g, x, y, boardColors[x][y]);	
-    		}
-	    }
-	    drawSquare(g, 0, 0 , BORDER_COLOR);
+			g.setColor(Color.GREEN);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 60));
+			g.drawString("Game Over\nPress Escape to Leave");
+		}
+		else
+		{
+			g.setColor(Color.BLACK);
+			g.fillRect(0,0,this.getWidth(),this.getHeight());
+			//Draws physical board
+			for (int x = 0; x < WIDTH + 9; x ++)
+			{
+   			 	for (int y = 0; y < HEIGHT + 2; y ++)
+ 			   	{
+    				drawSquare(g, x, y, boardColors[x][y]);	
+	    		}
+		    }
+	    	drawSquare(g, 0, 0 , BORDER_COLOR);
+		}
+		g.setFont(Font.getDefault());
 		g.drawString("Score: " + Integer.toString(score),XSCORE,YSCORE);
 	}
 	

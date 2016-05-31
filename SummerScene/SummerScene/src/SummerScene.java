@@ -13,6 +13,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	String line;
 	JFrame frame;
 	Desktop desktop;
+	TextEditor txtEdit;
 	Terminal terminal = new Terminal();
 	TetrisGame tetris = new TetrisGame();
 	Solitaire solitaire = new Solitaire();
@@ -38,7 +39,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	
     	
     	desktop = new Desktop(frame.getWidth(),frame.getHeight(), apps);
-    	
+    	terminal = new Terminal(desktop);
     	//Initializing computer stuff
     	
     	frame.getContentPane().add(summer);
@@ -86,6 +87,33 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				}
 			}
 		}
+		else if(s == Scene.TETRIS)
+		{
+			if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
+			{
+				s = Scene.DESKTOP;
+				frame.remove(tetris);
+				tetris = new TetrisGame();
+				frame.add(desktop);
+				frame.repaint();
+				desktop.repaint();
+			}
+			else
+			{
+				tetris.inputKey((int)Character.toUpperCase(e.getKeyChar()));
+			}
+		}
+		else if(s == Scene.TEXT_EDITOR)
+		{
+			if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
+			{
+				s = Scene.DESKTOP;
+				frame.remove(txtEdit);
+				frame.add(desktop);
+				frame.repaint();
+				desktop.repaint();
+			}
+		}
 		frame.validate();
 	}
 	
@@ -123,10 +151,21 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 							frame.add(tetris);
 							frame.repaint();
 							tetris.repaint();
+							frame.validate();
+							new Thread(tetris).start();
 							break;
 						case SOLITAIRE:
 							break;
+						case TEXT_EDITOR:
+							txtEdit = new TextEditor(desktop.getIcon(i).getFile());
+							frame.add(txtEdit);
+							frame.repaint();
+							txtEdit.repaint();
+							frame.validate();
 						default:
+							frame.add(desktop);
+							frame.repaint();
+							desktop.repaint();
 							
 					}
 					frame.validate();
@@ -158,6 +197,15 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	public void mouseExited(MouseEvent e){}
 	@Override
 	public void mouseEntered(MouseEvent e){}
+	
+	@Override
+	public void keyReleased(KeyEvent e)
+	{
+		if(s == Scene.TETRIS)
+		{
+			tetris.keyReleased(e);
+		}
+	}
 }
 
 /*CODE ARCHIVES

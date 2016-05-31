@@ -32,6 +32,7 @@ public class DesktopIcon
 	public int getWidth(){return file.getThumbnail().getIconWidth();}
 	public int getHeight(){return file.getThumbnail().getIconHeight();}
 	public Application getApp(){return file.getApp();}
+	public FileData getFile(){return file;}
 	public void draw(Container c, Graphics g, int x, int y)
 	{
 		file.getThumbnail().paintIcon(c,g,x,y);

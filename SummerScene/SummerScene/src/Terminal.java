@@ -18,6 +18,10 @@ public class Terminal extends Application
 		addNewLine("", true);
 		createNewResponses();
 	}
+	public Terminal(Desktop d){
+		this();
+		this.d = d;
+	}
 	public void setDesktop(Desktop d){this.d = d;}
 	public Scene getScene(){return Scene.TERMINAL;}
 	
@@ -247,7 +251,7 @@ public class Terminal extends Application
 				else
 				{
 					addNewLine("File " + otherArgs[0] + " added!", false);
-					addFile(otherArgs[0]);	
+					addFile(otherArgs);	
 				}
 				break;
 			default:
@@ -282,8 +286,8 @@ public class Terminal extends Application
 		}
 	}
 	
-	public void addFile(String name)
+	public void addFile(String[] args)
 	{
-		
+		d.addTextFile(args[0], (args.length == 1 ? new String[]{""} : Arrays.copyOfRange(args, 1,args.length)));
 	}
 }

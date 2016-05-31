@@ -16,6 +16,8 @@ public class TetrisTake2
     	frame.add(panel);
     	frame.getContentPane().add(panel);
     	frame.setVisible(true);
+    	frame.validate();
+		System.out.println("k");
     	panel.run();
 	}
 }

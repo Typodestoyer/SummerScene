@@ -12,5 +12,6 @@ E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Summer.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\SummerScene.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Terminal.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TetrisGame.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextEditor.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextFile.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Thumbnail.java
