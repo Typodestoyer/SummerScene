@@ -29,7 +29,7 @@
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Terminal.java</path>
+			<path>src\Summer.java</path>
 			<source>true</source>
 			<index>1</index>
 			<active>false</active>
@@ -47,13 +47,13 @@
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\FileData.java</path>
+			<path>src\TextFile.java</path>
 			<source>true</source>
 			<index>4</index>
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\TextFile.java</path>
+			<path>src\FileData.java</path>
 			<source>true</source>
 			<index>5</index>
 			<active>false</active>
@@ -65,7 +65,7 @@
 			<active>false</active>
 		</docitem>
 		<docitem>
-			<path>src\Application.java</path>
+			<path>src\Terminal.java</path>
 			<source>true</source>
 			<index>7</index>
 			<active>false</active>
@@ -74,7 +74,25 @@
 			<path>src\Desktop.java</path>
 			<source>true</source>
 			<index>8</index>
-			<active>true</active>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\Application.java</path>
+			<source>true</source>
+			<index>9</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\Scene.java</path>
+			<source>true</source>
+			<index>10</index>
+			<active>false</active>
+		</docitem>
+		<docitem>
+			<path>src\NextScene.java</path>
+			<source>true</source>
+			<index>11</index>
+			<active>false</active>
 		</docitem>
 	</open_files>
 </workspace_user>

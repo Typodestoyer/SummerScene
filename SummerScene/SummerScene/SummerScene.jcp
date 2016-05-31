@@ -58,6 +58,14 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\NextScene.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Scene.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Solitaire.java</path>
 				<folder>src</folder>
 			</fileitem>
