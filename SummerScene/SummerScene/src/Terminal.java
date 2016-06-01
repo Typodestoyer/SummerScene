@@ -4,88 +4,46 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Terminal extends Application
+public class Terminal extends TextInputPanel
 {
-	private final int TEXT_HEIGHT = 14;
-	ArrayList<JLabel> visTextLines = new ArrayList<JLabel>();
-	ArrayList<String> textLines = new ArrayList<String>();
+	private static String USER_PREFIX = "> ";
 	ArrayList<Command> commands = new ArrayList<Command>();
 	boolean exit = false;
 	Desktop d;
 	public Terminal()
 	{
+		super("> ");
+		addNewLine("",USER_PREFIX);
 		setBackground(Color.BLACK);
-		addNewLine("", true);
 		createNewResponses();
 	}
 	public Terminal(Desktop d){
 		this();
 		this.d = d;
 	}
+	
 	public void setDesktop(Desktop d){this.d = d;}
 	public Scene getScene(){return Scene.TERMINAL;}
 	
-	protected void paintComponent(Graphics g)
+	@Override
+	public Color getBackgroundColor()
 	{
-		this.removeAll();
-		g.setColor(Color.BLACK);
-		g.fillRect(0,0,this.getWidth(),this.getHeight());
-		for(int i = visTextLines.size()-1; i >= Math.max(0,visTextLines.size()-Math.ceil((double)(this.getHeight())/TEXT_HEIGHT)); i --)
-		{
-			JLabel jl = visTextLines.get(i);
-			jl.setFont(new Font("Lucida Console", 0, TEXT_HEIGHT - 1));
-			jl.setBounds(0,(int)(TEXT_HEIGHT*(i-Math.max(0,visTextLines.size()-((double)(this.getHeight())/TEXT_HEIGHT)))),this.getWidth(),TEXT_HEIGHT);
-			this.add(jl);
-		}
-		//consoleDisplay();
-		//bug testing
-		
-	}
-	public void backspaceCurrentLine()
-	{
-		if(!textLines.get(textLines.size()-1).equals(""))
-		{
-			setLine(textLines.size()-1,textLines.get(textLines.size()-1).substring(0,textLines.get(textLines.size()-1).length()-1),true);
-		}
-		repaint();
+		return Color.BLACK;
 	}
 	
-	public void paintThis()
-	{
-		repaint();
-	}
 	/*---------------------------------FOR DEBUGGING-------------------------------------
 	public void consoleDisplay()
 	{
-		System.out.println("-----" + textLines.size() + " " + visTextLines.size());
-		for (int i = 0; i < visTextLines.size(); i ++)
+		System.out.println("-----" + getTextLines().size() + " " + getVisTextLines().size());
+		for (int i = 0; i < getVisTextLines().size(); i ++)
 		{
-			JLabel jl = visTextLines.get(i);
+			JLabel jl = getVisTextLines().get(i);
 			System.out.println(i + ": " + jl.getText());
 		}
 	}
 	-----------------------------------------------------------------------------------*/
-	public void addToCurrentLine(char c)
-	{
-		if(c == '\n')
-		{
-			newLine();
-			
-		}
-		else
-		{
-			setLine(textLines.size()-1,textLines.get(textLines.size()-1) + c,true);
-		}
-		repaint();
-	}
-	public void newLine()
-	{
-		processCurrentLine();
-		while(textLines.size() * TEXT_HEIGHT >= this.getHeight())
-		{
-			removeFirstLine();
-		}
-	}
+	
+
 	public void clearScreen()
 	{  
 		for(int i = 0; i < 15; i ++)
@@ -93,29 +51,14 @@ public class Terminal extends Application
 			System.out.println();
 		}
 	}
-	public void setLine(int index, String line, boolean user)
-	{
-		textLines.set(index, line);
-		visTextLines.get(index).setText((user ? "> " : "") + line);
-		//System.out.println(index + " " + line + " " + visTextLines.get(index).getText());
-	}
-	public void addNewLine(String line, boolean user)
-	{
-		textLines.add(line);
-		visTextLines.add(new JLabel(user ? "> " : "" + line));
-		JLabel jl = visTextLines.get(visTextLines.size()-1);
-		jl.setBounds(0,TEXT_HEIGHT*(visTextLines.size()-1),this.getWidth(),TEXT_HEIGHT);
-		jl.setForeground(Color.WHITE);
-		jl.setVisible(true);
-		this.add(jl);
-	}
-	
+
+	@Override
 	public void processCurrentLine()
 	{
-		String line = textLines.get(textLines.size()-1);
+		String line = getTextLines().get(getTextLines().size()-1);
 		if(line.equals(""))
 		{
-			addNewLine("",true);
+			addNewLine("",USER_PREFIX);
 			return;
 		}
 		String[] words = line.split(" ");
@@ -130,7 +73,7 @@ public class Terminal extends Application
 				{
 					if(words.length == 0 || words[0].equals("?") || words[0].equals("help"))
 					{
-						addNewLine("Commands for \'" + c.calls().get(0) + "\':", false );
+						addNewLine("Commands for \'" + c.calls().get(0) + "\':", "" );
 						help(c.sub());
 						eval = false;
 						break;
@@ -150,7 +93,7 @@ public class Terminal extends Application
 						}
 						if(!broke)
 						{
-							addNewLine("Commands for \'" + c.calls().get(0) + "\':", false );
+							addNewLine("Commands for \'" + c.calls().get(0) + "\':", "" );
 							help(c.sub());
 							eval = false;
 							break;
@@ -161,14 +104,15 @@ public class Terminal extends Application
 				{
 					evalInput(c, words);
 				}
-				addNewLine("",false);
-				addNewLine("",true);
+				addNewLine("","");
+				addNewLine("",USER_PREFIX);
 				return;
 			}
 		}
-		addNewLine("Unknown command.", false);
-		addNewLine("",false);
-		addNewLine("",true);
+		addNewLine("Unknown command.", "");
+		addNewLine("","");
+		addNewLine("",USER_PREFIX);
+		repaint();
 	}
 	
 	private void createNewResponses()
@@ -229,7 +173,7 @@ public class Terminal extends Application
 	
 	private void help(Command c)
 	{
-		addNewLine(c.path + ": " + c.help(), false);
+		addNewLine(c.path + ": " + c.help(), "");
 	}
 	
 	private void evalInput(Command c, String[] otherArgs)
@@ -250,26 +194,13 @@ public class Terminal extends Application
 				}
 				else
 				{
-					addNewLine("File " + otherArgs[0] + " added!", false);
+					addNewLine("File " + otherArgs[0] + " added!", "");
 					addFile(otherArgs);	
 				}
 				break;
 			default:
-				addNewLine(c.response, false);
+				addNewLine(c.response, "");
 		}
-	}
-	
-	private void removeLine()
-	{
-		textLines.remove(visTextLines.size()-1);
-		visTextLines.remove(visTextLines.size()-1);
-	}
-	
-	private void removeFirstLine()
-	{
-		textLines.remove(0);
-		this.remove(visTextLines.get(0));
-		visTextLines.remove(0);
 	}
 	
 	public boolean shouldExit()
@@ -290,4 +221,6 @@ public class Terminal extends Application
 	{
 		d.addTextFile(args[0], (args.length == 1 ? new String[]{""} : Arrays.copyOfRange(args, 1,args.length)));
 	}
+	
+	public Color getTextColor(){return Color.WHITE;}
 }

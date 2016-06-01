@@ -19,6 +19,7 @@ public class TextFile extends FileData {
     	super(name);
     }
     
+    
     public TextFile(String name, String[] words)
     {
     	
@@ -37,4 +38,5 @@ public class TextFile extends FileData {
     }
     
     public String getContents(){return contents;}
+    public void setContents(String contents){this.contents = contents;}
 }

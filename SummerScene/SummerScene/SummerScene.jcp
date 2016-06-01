@@ -86,7 +86,15 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\TextEditorBox.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\TextFile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\TextInputPanel.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>

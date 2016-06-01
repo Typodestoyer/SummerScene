@@ -13,10 +13,12 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	String line;
 	JFrame frame;
 	Desktop desktop;
-	TextEditor txtEdit;
+	TextEditor txtEditPanel;
+	TextEditorBox txtEdit;
 	Terminal terminal = new Terminal();
 	TetrisGame tetris = new TetrisGame();
 	Solitaire solitaire = new Solitaire();
+	TextEditorButtonBar tebb = new TextEditorButtonBar();
 	
 	
 	ArrayList<Application> apps = new ArrayList<Application>();
@@ -105,14 +107,25 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		}
 		else if(s == Scene.TEXT_EDITOR)
 		{
-			if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
+			if(e.getKeyChar() == '\b')
 			{
+				txtEdit.backspaceCurrentLine();
+			}
+			else if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
+			{
+				txtEdit.save();
 				s = Scene.DESKTOP;
-				frame.remove(txtEdit);
+				frame.remove(txtEditPanel);
 				frame.add(desktop);
 				frame.repaint();
 				desktop.repaint();
 			}
+			else
+			{
+				txtEdit.addToCurrentLine(e.getKeyChar());
+			}
+			
+			txtEditPanel.repaint();
 		}
 		frame.validate();
 	}
@@ -157,11 +170,13 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 						case SOLITAIRE:
 							break;
 						case TEXT_EDITOR:
-							txtEdit = new TextEditor(desktop.getIcon(i).getFile());
-							frame.add(txtEdit);
+							txtEdit = new TextEditorBox(desktop.getIcon(i).getFile(), frame.getWidth(),frame.getHeight());
+							txtEditPanel = new TextEditor(tebb, txtEdit);
+							frame.add(txtEditPanel);
 							frame.repaint();
-							txtEdit.repaint();
+							txtEditPanel.repaint();
 							frame.validate();
+							break;
 						default:
 							frame.add(desktop);
 							frame.repaint();
