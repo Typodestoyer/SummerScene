@@ -35,7 +35,7 @@ public abstract class TextInputPanel extends Application
 		getTextLines().add(line);
 		getVisTextLines().add(new JLabel(prefix + line));
 		JLabel jl = getVisTextLines().get(getVisTextLines().size()-1);
-		jl.setBounds(0,TEXT_HEIGHT*(getVisTextLines().size()-1),this.getWidth(),TEXT_HEIGHT);
+		jl.setBounds(5,5+TEXT_HEIGHT*(getVisTextLines().size()-1),this.getWidth(),TEXT_HEIGHT);
 		jl.setForeground(getTextColor());
 		jl.setVisible(true);
 		this.add(jl);
@@ -53,8 +53,8 @@ public abstract class TextInputPanel extends Application
 		g.setColor(getBackgroundColor());
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
 		
-		xCursor = (visTextLines.get(visTextLines.size()-1).getText().length()) * 8;
-		yCursor = ((visTextLines.size()-1)*TEXT_HEIGHT);
+		xCursor = 5+(visTextLines.get(visTextLines.size()-1).getText().length()) * 8;
+		yCursor = (5+(visTextLines.size()-1)*TEXT_HEIGHT);
 		if(isCursorVisible)
 		{
 			g.setColor(getTextColor());
@@ -64,7 +64,7 @@ public abstract class TextInputPanel extends Application
 		{
 			JLabel jl = getVisTextLines().get(i);
 			jl.setFont(new Font("Lucida Console", 0, TextInputPanel.TEXT_HEIGHT - 1));
-			jl.setBounds(0,(int)(TextInputPanel.TEXT_HEIGHT*(i-Math.max(0,getVisTextLines().size()-((double)(this.getHeight())/TextInputPanel.TEXT_HEIGHT)))),this.getWidth(),TextInputPanel.TEXT_HEIGHT);
+			jl.setBounds(5,5+(int)(TextInputPanel.TEXT_HEIGHT*(i-Math.max(0,getVisTextLines().size()-((double)(this.getHeight())/TextInputPanel.TEXT_HEIGHT)))),this.getWidth(),TextInputPanel.TEXT_HEIGHT);
 			this.add(jl);
 		}
 		//consoleDisplay();
