@@ -12,10 +12,21 @@ import java.awt.geom.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class TextEditorButtonBar extends JComponent{
+public class TextEditorButtonBar extends JPanel{
 	
     public TextEditorButtonBar()
     {
+    	setLayout(new GridLayout(1,10));
+    	add(new JButton("Save"));
+    	add(new JButton("Exit"));
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
+    	add(new JPanel());
     }
     
     public void paintComponent(Graphics g)
