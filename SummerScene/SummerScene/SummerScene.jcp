@@ -34,6 +34,10 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\ButtonedApp.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Command.java</path>
 				<folder>src</folder>
 			</fileitem>
@@ -86,7 +90,15 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\TextEditor.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\TextEditorBox.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\TextEditorButtonBar.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>

@@ -20,7 +20,7 @@ public class TextEditorBox extends TextInputPanel
 	
 	public TextEditorBox(FileData inputFile, int width, int height)
 	{
-		super("");
+		USER_PREFIX = "";
 		TextFile newFile = (TextFile)inputFile;
 		this.file = newFile;
 		this.fileName = newFile.getName();
@@ -60,10 +60,47 @@ public class TextEditorBox extends TextInputPanel
 	
 	public void process(String contents)
 	{
-		String[] lines = contents.split("\n");
+		String[] lines = split(contents,'\n');
 		for(String line : lines)
 		{
 			addNewLine(line);
 		}
+	}
+	
+	@Override
+	public void backspace()
+	{
+		if(getTextLines().get(getTextLines().size()-1).equals(""))
+		{
+			if(getTextLines().size() > 1)
+			{
+				removeLine(getTextLines().size()-1);				
+			}		
+		}
+		else
+		{
+			setLine(getTextLines().size()-1,getTextLines().get(getTextLines().size()-1).substring(0,getTextLines().get(getTextLines().size()-1).length()-1),USER_PREFIX);
+		}
+	}
+	
+	private String[] split(String s, char splitChar)
+	{
+		ArrayList<String> contents = new ArrayList<String>();
+		contents.add("");
+		for(int i = 0; i < s.length(); i ++)
+		{
+			char c = s.charAt(i);
+			if(c == splitChar)
+			{
+				contents.add("");
+			}
+			else
+			{
+				contents.set(contents.size()-1,contents.get(contents.size()-1) + c);
+			}
+		}
+		String[] arr = new String[contents.size()];
+		arr = contents.toArray(arr);
+		return arr;
 	}
 }

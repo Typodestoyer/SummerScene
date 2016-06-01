@@ -14,24 +14,22 @@ import java.awt.event.*;
 
 public class TextEditorButtonBar extends JPanel{
 	
-    public TextEditorButtonBar()
+    public TextEditorButtonBar(ArrayList<JButton> buttons)
     {
-    	setLayout(new GridLayout(1,10));
-    	add(new JButton("Save"));
-    	add(new JButton("Exit"));
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
-    	add(new JPanel());
+    	setLayout(new GridLayout(1,5));
+    	for(JButton button : buttons)
+    	{
+    		add(button);
+    	}
+    	while(getComponentCount()<6)
+    	{
+    		add(new JLabel());
+    	}
     }
     
     public void paintComponent(Graphics g)
     {
-    	g.setColor(Color.RED);
+    	g.setColor(new Color(200,200,200));
     	g.fillRect(0,0,this.getWidth(),this.getHeight());
     }
     

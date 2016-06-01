@@ -6,13 +6,12 @@ import java.awt.event.*;
 
 public class Terminal extends TextInputPanel
 {
-	private static String USER_PREFIX = "> ";
 	ArrayList<Command> commands = new ArrayList<Command>();
 	boolean exit = false;
 	Desktop d;
 	public Terminal()
 	{
-		super("> ");
+		USER_PREFIX = "> ";
 		addNewLine("",USER_PREFIX);
 		setBackground(Color.BLACK);
 		createNewResponses();

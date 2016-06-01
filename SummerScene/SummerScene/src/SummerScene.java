@@ -18,8 +18,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	Terminal terminal = new Terminal();
 	TetrisGame tetris = new TetrisGame();
 	Solitaire solitaire = new Solitaire();
-	TextEditorButtonBar tebb = new TextEditorButtonBar();
-	
+	ArrayList<JButton> buttons = new ArrayList<JButton>();
+	TextEditorButtonBar tebb;
 	
 	ArrayList<Application> apps = new ArrayList<Application>();
 	Summer summer = new Summer();
@@ -29,12 +29,14 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	{
 		frame = new JFrame();
     	frame.setTitle("My Summer Scene");
-    	frame.setSize(700, 600);
     	frame.setPreferredSize(new Dimension(700, 600));
+    	frame.setSize(700, 600);
+    	frame.setResizable(false);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.addKeyListener(this);
     	frame.addMouseListener(this);
     	frame.addMouseMotionListener(this);
+    	
     	apps.add(terminal);
     	apps.add(tetris);
     	apps.add(solitaire);
@@ -43,8 +45,12 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	desktop = new Desktop(frame.getWidth(),frame.getHeight(), apps);
     	terminal = new Terminal(desktop);
     	//Initializing computer stuff
+    	buttons.add(new ClickyJButton("Save and Exit", new SaveAndExitListener()));
+    	buttons.add(new ClickyJButton("Save", new SaveListener()));
+    	buttons.add(new ClickyJButton("Exit", new ExitListener()));
+    	tebb = new TextEditorButtonBar(buttons);
     	
-    	frame.getContentPane().add(summer);
+    	frame.add(summer);
     	frame.setVisible(true);
     	
 	}
@@ -55,7 +61,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		{
 			if(e.getKeyChar() == '\b')
 			{
-				terminal.backspaceCurrentLine();
+				terminal.backspace();
 			}
 			else if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
 			{
@@ -109,8 +115,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		{
 			if(e.getKeyChar() == '\b')
 			{
-				txtEdit.backspaceCurrentLine();
-			}
+				txtEdit.backspace();
+			}/*
 			else if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
 			{
 				txtEdit.save();
@@ -119,7 +125,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				frame.add(desktop);
 				frame.repaint();
 				desktop.repaint();
-			}
+			}*/
 			else
 			{
 				txtEdit.addToCurrentLine(e.getKeyChar());
@@ -219,6 +225,49 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		if(s == Scene.TETRIS)
 		{
 			tetris.keyReleased(e);
+		}
+	}
+	
+	private class ClickyJButton extends JButton
+	{
+		public ClickyJButton(String text, ActionListener listener)
+		{
+			super(text);
+			setFocusable(false);
+			addActionListener(listener);
+		}
+	}
+	
+	private class ExitListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			s = Scene.DESKTOP;
+			frame.remove(txtEditPanel);
+			frame.add(desktop);
+			frame.repaint();
+			desktop.repaint();
+		}
+	}
+	
+	private class SaveListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			txtEdit.save();
+		}
+	}
+	
+	private class SaveAndExitListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			txtEdit.save();
+			s = Scene.DESKTOP;
+			frame.remove(txtEditPanel);
+			frame.add(desktop);
+			frame.repaint();
+			desktop.repaint();
 		}
 	}
 }
