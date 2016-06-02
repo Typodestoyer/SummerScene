@@ -6,6 +6,7 @@
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\ExeFile.java"
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\FileData.java"
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Folder.java"
+"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\MyFile.java"
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Scene.java"
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Solitaire.java"
 "C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Star.java"

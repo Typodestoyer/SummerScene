@@ -62,6 +62,10 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\MyFile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Scene.java</path>
 				<folder>src</folder>
 			</fileitem>

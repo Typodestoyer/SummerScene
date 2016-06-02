@@ -7,7 +7,7 @@
  */
 
 
-public class ExeFile extends FileData {
+public class ExeFile extends MyFile {
 	
 	public ExeFile()
 	{

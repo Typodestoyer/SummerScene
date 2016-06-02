@@ -6,13 +6,12 @@ import java.awt.event.*;
 
 public class Terminal extends TextInputPanel
 {
-	private static String USER_PREFIX = "> ";
 	ArrayList<Command> commands = new ArrayList<Command>();
 	boolean exit = false;
 	Desktop d;
 	public Terminal()
 	{
-		super("> ");
+		USER_PREFIX = "> ";
 		addNewLine("",USER_PREFIX);
 		setBackground(Color.BLACK);
 		createNewResponses();
@@ -124,6 +123,7 @@ public class Terminal extends TextInputPanel
 		addCommand(new Command(new String[] {"exit", "letmeout","aah"}, "Exiting...", "Lets you leave ;)"));
 		addCommand(new Command(new String[] {"test"}, "Tests multiword commands"));
 		addCommand(new Command(new String[] {"touch"}, "Creates new file"));
+		addCommand(new Command(new String[] {"mkdir"}, "Makes a new folder!"));
 		addCommand("test", new Command(new String[] {"this"}, "", "Tests this!", "test"));
 		addCommand("test this", new Command(new String[]{"functionality!"}, "Hello", "This works!", "test this"));
 		
@@ -197,6 +197,16 @@ public class Terminal extends TextInputPanel
 					addNewLine("File " + otherArgs[0] + " added!", "");
 					addFile(otherArgs);	
 				}
+			case "mkdir":
+				if(otherArgs.length == 0)
+				{
+					help(c);
+				}
+				else
+				{
+					addNewLine("Folder " + otherArgs[0] + " added!", "");
+					addFolder(otherArgs[0]);	
+				}
 				break;
 			default:
 				addNewLine(c.response, "");
@@ -220,6 +230,11 @@ public class Terminal extends TextInputPanel
 	public void addFile(String[] args)
 	{
 		d.addTextFile(args[0], (args.length == 1 ? new String[]{""} : Arrays.copyOfRange(args, 1,args.length)));
+	}
+	
+	public void addFolder(String name)
+	{
+		d.addFolder(name);
 	}
 	
 	public Color getTextColor(){return Color.WHITE;}

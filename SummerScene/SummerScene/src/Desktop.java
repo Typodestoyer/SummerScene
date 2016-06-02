@@ -55,6 +55,9 @@ public class Desktop extends JPanel{
     	colors = new ArrayList<Color>();
     	shapes = new ArrayList<Polygon>();
     	
+    	addTextFile("Test 1",new String[]{"Hello, world!"});
+    	addFolder("Test Folder");
+    	
     }
     @Override
     protected void paintComponent(Graphics g)
@@ -88,6 +91,17 @@ public class Desktop extends JPanel{
     public void addTextFile(String name, String[] contents)
     {
     	items.add(new DesktopIcon(xLoc, yLoc, new TextFile(name,contents)));
+    	xLoc += 100;
+    	if(xLoc > this.getWidth() - 100)
+    	{
+    		xLoc = 20;
+    		yLoc += 100;
+    	}
+    }
+    
+    public void addFolder(String name)
+    {
+    	items.add(new DesktopIcon(xLoc, yLoc, new Folder(name)));
     	xLoc += 100;
     	if(xLoc > this.getWidth() - 100)
     	{

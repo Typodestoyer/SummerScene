@@ -62,12 +62,12 @@ public class ButtonedApp implements LayoutManager
 		//Lays out the specified container.
 	public Dimension minimumLayoutSize(Container parent)
 	{
-		return new Dimension(400,400);
+		return new Dimension(BUTTON_BAR_HEIGHT,50);
 	}
 		//Calculates the minimum size dimensions for the specified container, given the components it contains.
 	public Dimension preferredLayoutSize(Container parent)
 	{
-		return new Dimension(500,500);
+		return new Dimension(BUTTON_BAR_HEIGHT,100);
 	}
 		//Calculates the preferred size dimensions for the specified container, given the components it contains.
 	public void removeLayoutComponent(Component comp)

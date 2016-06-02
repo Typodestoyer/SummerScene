@@ -14,19 +14,18 @@ import java.awt.event.*;
 
 public abstract class TextInputPanel extends Application
 {
-	private String USER_PREFIX;
+	protected String USER_PREFIX;
 	public static final int TEXT_HEIGHT = 14;
+	int xCursor = 0, yCursor = 0;
 	ArrayList<JLabel> visTextLines = new ArrayList<JLabel>();
 	ArrayList<String> textLines = new ArrayList<String>();
+	javax.swing.Timer blinkyCursorTimer;
+	boolean isCursorVisible = true;
 	
 	public TextInputPanel(){
 		super();
-	}
-	
-	public TextInputPanel(String prefix)
-	{
-		super();
-		USER_PREFIX = prefix;
+		blinkyCursorTimer = new javax.swing.Timer(750,new BlinkyCursorListener());
+		blinkyCursorTimer.start();
 	}
 	
 	public void addNewLine(String line){addNewLine(line, "");}
@@ -36,7 +35,7 @@ public abstract class TextInputPanel extends Application
 		getTextLines().add(line);
 		getVisTextLines().add(new JLabel(prefix + line));
 		JLabel jl = getVisTextLines().get(getVisTextLines().size()-1);
-		jl.setBounds(0,TEXT_HEIGHT*(getVisTextLines().size()-1),this.getWidth(),TEXT_HEIGHT);
+		jl.setBounds(5,5+TEXT_HEIGHT*(getVisTextLines().size()-1),this.getWidth(),TEXT_HEIGHT);
 		jl.setForeground(getTextColor());
 		jl.setVisible(true);
 		this.add(jl);
@@ -50,20 +49,29 @@ public abstract class TextInputPanel extends Application
 	protected void paintComponent(Graphics g)
 	{
 		this.removeAll();
+		
 		g.setColor(getBackgroundColor());
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
+		
+		xCursor = 5+(visTextLines.get(visTextLines.size()-1).getText().length()) * 8;
+		yCursor = (5+(visTextLines.size()-1)*TEXT_HEIGHT);
+		if(isCursorVisible)
+		{
+			g.setColor(getTextColor());
+			g.fillRect(xCursor,yCursor,1,TEXT_HEIGHT);
+		}
 		for(int i = getVisTextLines().size()-1; i >= Math.max(0,getVisTextLines().size()-Math.ceil((double)(this.getHeight())/TextInputPanel.TEXT_HEIGHT)); i --)
 		{
 			JLabel jl = getVisTextLines().get(i);
 			jl.setFont(new Font("Lucida Console", 0, TextInputPanel.TEXT_HEIGHT - 1));
-			jl.setBounds(0,(int)(TextInputPanel.TEXT_HEIGHT*(i-Math.max(0,getVisTextLines().size()-((double)(this.getHeight())/TextInputPanel.TEXT_HEIGHT)))),this.getWidth(),TextInputPanel.TEXT_HEIGHT);
+			jl.setBounds(5,5+(int)(TextInputPanel.TEXT_HEIGHT*(i-Math.max(0,getVisTextLines().size()-((double)(this.getHeight())/TextInputPanel.TEXT_HEIGHT)))),this.getWidth(),TextInputPanel.TEXT_HEIGHT);
 			this.add(jl);
 		}
 		//consoleDisplay();
 		//bug testing
 	}
 	
-	public void backspaceCurrentLine()
+	public void backspace()
 	{
 		if(!getTextLines().get(getTextLines().size()-1).equals(""))
 		{
@@ -76,7 +84,6 @@ public abstract class TextInputPanel extends Application
 		if(c == '\n')
 		{
 			newLine();
-			
 		}
 		else
 		{
@@ -88,7 +95,6 @@ public abstract class TextInputPanel extends Application
 	{
 		getTextLines().set(index, line);
 		getVisTextLines().get(index).setText(prefix + line);
-		//System.out.println(index + " " + line + " " + getVisTextLines().get(index).getText());
 	}
 	
 	public void newLine()
@@ -106,11 +112,20 @@ public abstract class TextInputPanel extends Application
 		addNewLine("","");
 	}
 	
-	private void removeLine(int index)
+	protected void removeLine(int index)
 	{
 		getTextLines().remove(index);
 		getVisTextLines().remove(index);
 	}
 	
 	public abstract Color getBackgroundColor();
+	
+	private class BlinkyCursorListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			isCursorVisible = !isCursorVisible;
+			repaint();
+		}
+	}
 }

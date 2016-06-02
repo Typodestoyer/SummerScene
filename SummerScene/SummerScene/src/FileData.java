@@ -30,16 +30,6 @@ public abstract class FileData {
     	this(name,pic);
     	this.app = app;
 	}
-	public FileData(String name) //assumes txt
-	{
-		ArrayList<Color> colors = new ArrayList<Color>();
-    	ArrayList<Polygon> shapes = new ArrayList<Polygon>();
-    	colors.add(new Color(200,200,200));
-    	shapes.add(new Polygon(new int[]{0,0,45,45}, new int[]{0,60,60,0}, 4));
-    	this.name = name;
-    	this.pic =  new Thumbnail(45,60,colors,shapes);
-    	/*new TextEditor(name)*/
-	}
 	
 	public Application getApp()
 	{
