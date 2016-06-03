@@ -197,6 +197,7 @@ public class Terminal extends TextInputPanel
 					addNewLine("File " + otherArgs[0] + " added!", "");
 					addFile(otherArgs);	
 				}
+				break;
 			case "mkdir":
 				if(otherArgs.length == 0)
 				{

@@ -21,7 +21,12 @@ public class Folder extends FileData
     
     public Folder(String name)
     {
-    	super(name, getPic());
+    	super(name, getPic(), new FolderApp(700,600));
+    }
+    
+    public Folder(String name, int width, int height)
+    {
+    	super(name, getPic(), new FolderApp(700,600));
     }
     
     public static Thumbnail getPic()
@@ -35,5 +40,40 @@ public class Folder extends FileData
     	return new Thumbnail(45,60,colors,shapes);
     }
     
+    public void add(FileData file)
+    {
+    	folderContents.add(file);
+    }
     
+    public FileData get(String name)
+    {
+    	for(FileData file : folderContents)
+    	{
+    		if(file.getName().equals(name))
+    		{
+    			return file;
+    		}
+       	}
+       	throw new RuntimeException("That folder cannot be found!");
+    }
+    
+    public Folder getSubfolder(String name)
+    {
+    	for(FileData file : folderContents)
+    	{
+    		if(file instanceof Folder)
+    		{
+    			if(file.getName().equals(name))
+    			{
+    				return (Folder)file;
+    			}
+    		}
+    	}
+       	throw new RuntimeException("That folder cannot be found!");
+    }
+    
+    public ArrayList<FileData> getContents()
+    {
+    	return folderContents;
+    }
 }

@@ -46,6 +46,10 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\DesktopFolder.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\DesktopIcon.java</path>
 				<folder>src</folder>
 			</fileitem>
@@ -59,6 +63,10 @@
 			</fileitem>
 			<fileitem>
 				<path>src\Folder.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\FolderApp.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>

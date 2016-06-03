@@ -19,5 +19,11 @@ public abstract class Application extends JPanel {
 		setOpaque(true);
     }
     
+    public Application(int width, int height)
+    {
+    	this();
+    	setSize(width, height);
+    }
+    
     public abstract Scene getScene();
 }

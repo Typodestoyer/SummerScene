@@ -1,22 +1,24 @@
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Application.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\ButtonedApp.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Command.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Desktop.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\DesktopIcon.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\ExeFile.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\FileData.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Folder.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\MyFile.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Scene.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Solitaire.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Star.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Summer.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\SummerScene.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Terminal.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TetrisGame.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TextEditor.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TextEditorBox.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TextEditorButtonBar.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TextFile.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\TextInputPanel.java"
-"C:\\Users\\DDunbrack\\Desktop\\Josh HW\\Programming Stuff\\GitHub\\SummerScene\\SummerScene\\SummerScene\\src\\Thumbnail.java"
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Application.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\ButtonedApp.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Command.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Desktop.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\DesktopFolder.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\DesktopIcon.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\ExeFile.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\FileData.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Folder.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\FolderApp.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\MyFile.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Scene.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Solitaire.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Star.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Summer.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\SummerScene.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Terminal.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TetrisGame.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextEditor.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextEditorBox.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextEditorButtonBar.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextFile.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\TextInputPanel.java
+E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Thumbnail.java
