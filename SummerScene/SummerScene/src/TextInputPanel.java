@@ -22,7 +22,8 @@ public abstract class TextInputPanel extends Application
 	javax.swing.Timer blinkyCursorTimer;
 	boolean isCursorVisible = true;
 	
-	public TextInputPanel(){
+	public TextInputPanel()
+	{
 		super();
 		blinkyCursorTimer = new javax.swing.Timer(750,new BlinkyCursorListener());
 		blinkyCursorTimer.start();
@@ -71,11 +72,13 @@ public abstract class TextInputPanel extends Application
 		//bug testing
 	}
 	
+	public abstract String getPrefix();
+	
 	public void backspace()
 	{
 		if(!getTextLines().get(getTextLines().size()-1).equals(""))
 		{
-			setLine(getTextLines().size()-1,getTextLines().get(getTextLines().size()-1).substring(0,getTextLines().get(getTextLines().size()-1).length()-1),USER_PREFIX);
+			setLine(getTextLines().size()-1,getTextLines().get(getTextLines().size()-1).substring(0,getTextLines().get(getTextLines().size()-1).length()-1),getPrefix());
 		}
 	}
 	
@@ -87,7 +90,7 @@ public abstract class TextInputPanel extends Application
 		}
 		else
 		{
-			setLine(getTextLines().size()-1,getTextLines().get(getTextLines().size()-1) + c,USER_PREFIX);
+			setLine(getTextLines().size()-1,getTextLines().get(getTextLines().size()-1) + c,getPrefix());
 		}
 	}
 	

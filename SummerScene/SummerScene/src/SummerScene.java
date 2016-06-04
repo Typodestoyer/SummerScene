@@ -22,6 +22,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	ArrayList<JButton> buttons = new ArrayList<JButton>();
 	TextEditorButtonBar tebb;
 	String currentFolderPath = "";
+	Folder currentFolder;
 	
 	ArrayList<Application> apps = new ArrayList<Application>();
 	Summer summer = new Summer();
@@ -45,8 +46,9 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
     	
     	
     	desktopFolder = new DesktopFolder(frame.getWidth(),frame.getHeight(), apps);
+    	currentFolder = desktopFolder;
     	desktop = desktopFolder.getDesktop();
-    	terminal = new Terminal(desktop);
+    	terminal = new Terminal(desktopFolder);
     	//Initializing computer stuff
     	buttons.add(new ClickyJButton("Save and Exit", new SaveAndExitListener()));
     	buttons.add(new ClickyJButton("Save", new SaveListener()));
@@ -96,15 +98,16 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				}
 				else
 				{
-					String[] folderPieces = currentFolderPath.split("/");
+					String[] folderPieces = currentFolderPath.split("\\\\");
 					Folder f = desktopFolder;
 					currentFolderPath = "";
 					folderPieces = Arrays.copyOfRange(folderPieces,0,folderPieces.length-1);
 					for(String name : folderPieces)
 					{
 						f = f.getSubfolder(name);
-						currentFolderPath += name + "/";
+						currentFolderPath += name + "\\";
 					}
+					currentFolder = f;
 					frame.setContentPane(f.getApp());
 				}
 			}
@@ -165,13 +168,13 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		}
 		if(s==Scene.FOLDER)
 		{
-			for(int i = 0; i < desktop.getItems().size(); i ++)
+			for(int i = 0; i < currentFolder.getFolderApp().getItems().size(); i ++)
 			{
-				Rectangle r = desktop.getItems().get(i);
+				Rectangle r = currentFolder.getFolderApp().getItems().get(i);
 				if(r.contains(e.getX()-8,e.getY()-30))
 				{
 					//frame.remove(desktop);
-					s = desktop.getIcon(i).getScene();
+					s = currentFolder.getFolderApp().getIcon(i).getScene();
 					switch(s)
 					{
 						case TERMINAL:
@@ -189,7 +192,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 						case SOLITAIRE:
 							break;
 						case TEXT_EDITOR:
-							txtEdit = new TextEditorBox(desktop.getIcon(i).getFile(), frame.getWidth(),frame.getHeight());
+							txtEdit = new TextEditorBox(currentFolder.getFolderApp().getIcon(i).getFile(), frame.getWidth(),frame.getHeight());
 							txtEditPanel = new TextEditor(tebb, txtEdit);
 							frame.setContentPane(txtEditPanel);
 							//frame.repaint();
@@ -197,9 +200,12 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 							frame.validate();
 							break;
 						case FOLDER:
-							currentFolderPath += (desktop.getIcon(i).getName() + "/");
+							currentFolderPath += (desktop.getIcon(i).getName() + "\\");
+							currentFolder = currentFolder.getSubfolder(desktop.getIcon(i).getName());
 							frame.setContentPane(desktop.getIcon(i).getApp());
 							frame.validate();
+							currentFolder.getApp().repaint();
+							frame.repaint();
 							break;
 						default:
 							//frame.setContentPane(desktop);
@@ -261,9 +267,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		public void actionPerformed(ActionEvent e)
 		{
 			s = Scene.FOLDER;
-			frame.setContentPane(desktop);
+			frame.setContentPane(currentFolder.getApp());
 			frame.repaint();
-			desktop.repaint();
 		}
 	}
 	
@@ -281,9 +286,8 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		{
 			txtEdit.save();
 			s = Scene.FOLDER;
-			frame.setContentPane(desktop);
+			frame.setContentPane(currentFolder.getApp());
 			frame.repaint();
-			desktop.repaint();
 		}
 	}
 }

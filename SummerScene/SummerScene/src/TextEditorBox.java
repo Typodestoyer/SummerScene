@@ -29,6 +29,11 @@ public class TextEditorBox extends TextInputPanel
 		setSize(width,height-ButtonedApp.BUTTON_BAR_HEIGHT);
     }
     
+    public String getPrefix()
+    {
+    	return "";
+    }
+    
     public Scene getScene(){return Scene.TEXT_EDITOR;}
     /*
     @Override

@@ -41,6 +41,7 @@ public class FolderApp extends Application
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
     	for(DesktopIcon item : items)
     	{
+    		System.out.println("Drawing!");
     		item.draw(this, g, item.getX(),item.getY());
     	}
     }
@@ -78,6 +79,18 @@ public class FolderApp extends Application
     	}
     }
     
+    public void addExeFile(ExeFile file)
+    {
+    	items.add(new DesktopIcon(xLoc,yLoc,file));
+    	xLoc += 100;
+    	if(xLoc > this.getWidth() - 100)
+    	{
+    		xLoc = 20;
+    		yLoc += 100;
+    	}
+    }
+    
+    
     public void addTextFile(String name, String[] contents)
     {
     	items.add(new DesktopIcon(xLoc, yLoc, new TextFile(name,contents)));
@@ -96,6 +109,7 @@ public class FolderApp extends Application
     	{
     		rectangles.add(new Rectangle(item.getX(),item.getY(),item.getWidth(),item.getHeight()));
     	}
+    	repaint();
     	return rectangles;
     }
     

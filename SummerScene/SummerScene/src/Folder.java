@@ -13,20 +13,25 @@ import java.awt.event.*;
 
 public class Folder extends FileData
 {
+	FolderApp foldApp;
 	ArrayList<FileData> folderContents = new ArrayList<FileData>();
     public Folder()
     {
     	super();
+    	foldApp = (FolderApp)getApp();
+    	foldApp = (FolderApp)getApp();
     }
     
     public Folder(String name)
     {
     	super(name, getPic(), new FolderApp(700,600));
+    	foldApp = (FolderApp)getApp();
     }
     
     public Folder(String name, int width, int height)
     {
-    	super(name, getPic(), new FolderApp(700,600));
+    	super(name, getPic(), new FolderApp(width,height));
+    	foldApp = (FolderApp)getApp();
     }
     
     public static Thumbnail getPic()
@@ -40,9 +45,33 @@ public class Folder extends FileData
     	return new Thumbnail(45,60,colors,shapes);
     }
     
-    public void add(FileData file)
+    //@Override
+    public FolderApp getFolderApp()
+    {
+    	foldApp = (FolderApp)getApp();
+    	if(foldApp == null)
+    	{
+    		throw new RuntimeException("Foldapp broken!");
+    	}
+    	return foldApp;
+    }
+    
+    public void add(ExeFile file)
     {
     	folderContents.add(file);
+    	getFolderApp().addExeFile(file);
+    }
+    
+    public void addTextFile(String name, String[] contents)
+    {
+    	folderContents.add(new TextFile(name, contents));
+    	getFolderApp().addTextFile(name, contents);
+    }
+    
+    public void addFolder(String name)
+    {
+    	folderContents.add(new Folder(name));
+    	getFolderApp().addFolder(name);
     }
     
     public FileData get(String name)
@@ -69,7 +98,7 @@ public class Folder extends FileData
     			}
     		}
     	}
-       	throw new RuntimeException("That folder cannot be found!");
+       	return null;
     }
     
     public ArrayList<FileData> getContents()

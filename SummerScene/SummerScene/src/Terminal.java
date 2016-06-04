@@ -7,7 +7,10 @@ import java.awt.event.*;
 public class Terminal extends TextInputPanel
 {
 	ArrayList<Command> commands = new ArrayList<Command>();
+	String currentFilePath = "";
+	Folder currentFolder;
 	boolean exit = false;
+	DesktopFolder dFile;
 	Desktop d;
 	public Terminal()
 	{
@@ -16,9 +19,13 @@ public class Terminal extends TextInputPanel
 		setBackground(Color.BLACK);
 		createNewResponses();
 	}
-	public Terminal(Desktop d){
+	
+	public Terminal(DesktopFolder dFile)
+	{
 		this();
-		this.d = d;
+		this.dFile = dFile;
+		this.d = dFile.getDesktop();
+		currentFolder = dFile;
 	}
 	
 	public void setDesktop(Desktop d){this.d = d;}
@@ -57,7 +64,7 @@ public class Terminal extends TextInputPanel
 		String line = getTextLines().get(getTextLines().size()-1);
 		if(line.equals(""))
 		{
-			addNewLine("",USER_PREFIX);
+			addNewLine("",getPrefix());
 			return;
 		}
 		String[] words = line.split(" ");
@@ -104,7 +111,7 @@ public class Terminal extends TextInputPanel
 					evalInput(c, words);
 				}
 				addNewLine("","");
-				addNewLine("",USER_PREFIX);
+				addNewLine("",getPrefix());
 				return;
 			}
 		}
@@ -123,7 +130,9 @@ public class Terminal extends TextInputPanel
 		addCommand(new Command(new String[] {"exit", "letmeout","aah"}, "Exiting...", "Lets you leave ;)"));
 		addCommand(new Command(new String[] {"test"}, "Tests multiword commands"));
 		addCommand(new Command(new String[] {"touch"}, "Creates new file"));
-		addCommand(new Command(new String[] {"mkdir"}, "Makes a new folder!"));
+		addCommand(new Command(new String[] {"mkdir"}, "Makes a new folder"));
+		addCommand(new Command(new String[] {"cd"}, "Changes current directory"));
+		addCommand(new Command(new String[] {"ls"}, "Lists everything in current directory"));
 		addCommand("test", new Command(new String[] {"this"}, "", "Tests this!", "test"));
 		addCommand("test this", new Command(new String[]{"functionality!"}, "Hello", "This works!", "test this"));
 		
@@ -209,9 +218,81 @@ public class Terminal extends TextInputPanel
 					addFolder(otherArgs[0]);	
 				}
 				break;
+			case "cd":
+				if(otherArgs.length == 0)
+				{
+					help(c);
+				}
+				else
+				{
+					changeDirectoryTo(concat(otherArgs," "));	
+				}
+				break;
+			case "ls":
+				for(FileData f : currentFolder.getContents())
+				{
+					addNewLine(f.getName(),"");
+				}
 			default:
 				addNewLine(c.response, "");
 		}
+	}
+	
+	public String concat(String[] arr, String split)
+	{
+		String retStr = "";
+		for(String s : arr)
+		{
+			retStr += s + split;
+		}
+		retStr = retStr.substring(0,retStr.length()-split.length());
+		return retStr;
+	}
+	
+	public void changeDirectoryTo(String directory)
+	{
+		if(directory.equals(".."))
+		{
+			if(currentFilePath.equals(""))
+			{
+				addNewLine("Already at Desktop!", "");
+			}
+			else
+			{
+				String[] files = directory.split("\\\\");
+				files = Arrays.copyOfRange(files, 0, files.length-1);
+				String tempFilePath = "";
+				currentFolder = dFile;
+				for(String s : files)
+				{
+					tempFilePath += s + "\\";
+					currentFolder = currentFolder.getSubfolder(s);
+					if(currentFolder == null)
+					{
+						addNewLine("That folder does not exist!","");
+						return;
+					}
+				}
+				currentFilePath = tempFilePath;
+			}	
+		}
+		else
+		{
+			if(currentFolder.getSubfolder(directory) != null)
+			{
+				currentFilePath += directory;
+				currentFolder = currentFolder.getSubfolder(directory);
+			}
+			else
+			{
+				addNewLine("No such directory " + directory + "!");
+			}
+		}
+	}
+	
+	public String getPrefix()
+	{
+		return currentFilePath + USER_PREFIX; 
 	}
 	
 	public boolean shouldExit()
@@ -230,12 +311,12 @@ public class Terminal extends TextInputPanel
 	
 	public void addFile(String[] args)
 	{
-		d.addTextFile(args[0], (args.length == 1 ? new String[]{""} : Arrays.copyOfRange(args, 1,args.length)));
+		currentFolder.addTextFile(args[0], (args.length == 1 ? new String[]{""} : Arrays.copyOfRange(args, 1,args.length)));
 	}
 	
 	public void addFolder(String name)
 	{
-		d.addFolder(name);
+		currentFolder.addFolder(name);
 	}
 	
 	public Color getTextColor(){return Color.WHITE;}
