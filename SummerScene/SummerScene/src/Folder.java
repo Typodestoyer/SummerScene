@@ -19,7 +19,7 @@ public class Folder extends FileData
     {
     	super();
     	foldApp = (FolderApp)getApp();
-    	foldApp = (FolderApp)getApp();
+    	System.out.println(folderContents);
     }
     
     public Folder(String name)

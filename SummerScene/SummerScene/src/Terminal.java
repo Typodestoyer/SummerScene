@@ -214,8 +214,8 @@ public class Terminal extends TextInputPanel
 				}
 				else
 				{
-					addNewLine("Folder " + otherArgs[0] + " added!", "");
-					addFolder(otherArgs[0]);	
+					addNewLine("Folder " + concat(otherArgs, " ") + " added!", "");
+					addFolder(concat(otherArgs, " "));	
 				}
 				break;
 			case "cd":
@@ -231,7 +231,10 @@ public class Terminal extends TextInputPanel
 			case "ls":
 				for(FileData f : currentFolder.getContents())
 				{
-					addNewLine(f.getName(),"");
+					if(f.getName() != null)
+					{
+						addNewLine(f.getName(),"");
+					}
 				}
 			default:
 				addNewLine(c.response, "");
@@ -259,7 +262,7 @@ public class Terminal extends TextInputPanel
 			}
 			else
 			{
-				String[] files = directory.split("\\\\");
+				String[] files = currentFilePath.split("\\\\");
 				files = Arrays.copyOfRange(files, 0, files.length-1);
 				String tempFilePath = "";
 				currentFolder = dFile;
@@ -280,7 +283,7 @@ public class Terminal extends TextInputPanel
 		{
 			if(currentFolder.getSubfolder(directory) != null)
 			{
-				currentFilePath += directory;
+				currentFilePath += directory + "\\";
 				currentFolder = currentFolder.getSubfolder(directory);
 			}
 			else

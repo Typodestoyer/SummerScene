@@ -18,6 +18,8 @@ public class DesktopFolder extends Folder
     {
     	super("");
     	d = new Desktop(width, height, apps);
+    	
+    	
     	ArrayList<Color> colors = new ArrayList<Color>();
     	ArrayList<Polygon> shapes = new ArrayList<Polygon>();
 		colors.add(Color.BLACK);

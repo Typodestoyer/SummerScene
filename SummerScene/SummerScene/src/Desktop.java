@@ -33,7 +33,7 @@ public class Desktop extends FolderApp
     }
     public Desktop(int width, int height, ArrayList<Application> apps)
     {
-    	this();	
+    	super(width, height);	
     }
     
 }

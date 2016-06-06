@@ -132,16 +132,18 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 			if(e.getKeyChar() == '\b')
 			{
 				txtEdit.backspace();
-			}/*
+			}
 			else if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
 			{
+				/*
 				txtEdit.save();
 				s = Scene.FOLDER;
 				frame.remove(txtEditPanel);
 				frame.add(desktop);
 				frame.repaint();
 				desktop.repaint();
-			}*/
+				*/
+			}
 			else
 			{
 				txtEdit.addToCurrentLine(e.getKeyChar());
@@ -200,18 +202,15 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 							frame.validate();
 							break;
 						case FOLDER:
-							currentFolderPath += (desktop.getIcon(i).getName() + "\\");
-							currentFolder = currentFolder.getSubfolder(desktop.getIcon(i).getName());
-							frame.setContentPane(desktop.getIcon(i).getApp());
+							currentFolder = currentFolder.getSubfolder(currentFolder.getFolderApp().getIcon(i).getName());
+							currentFolderPath += (currentFolder.getName() + "\\");
+							frame.setContentPane(currentFolder.getApp());							
 							frame.validate();
-							currentFolder.getApp().repaint();
-							frame.repaint();
 							break;
 						default:
 							//frame.setContentPane(desktop);
 							frame.repaint();
 							desktop.repaint();
-							
 					}
 					frame.validate();
 				}

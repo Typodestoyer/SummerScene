@@ -41,7 +41,6 @@ public class FolderApp extends Application
 		g.fillRect(0,0,this.getWidth(),this.getHeight());
     	for(DesktopIcon item : items)
     	{
-    		System.out.println("Drawing!");
     		item.draw(this, g, item.getX(),item.getY());
     	}
     }
