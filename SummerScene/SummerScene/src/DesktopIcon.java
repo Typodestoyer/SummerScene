@@ -39,4 +39,9 @@ public class DesktopIcon
 		g.setColor(Color.BLACK);
 		g.drawString(getName(),x,y+getHeight()+15);
 	}
+	
+	public String toString()
+	{
+		return file.getApp().toString();
+	}
 }

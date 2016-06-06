@@ -18,7 +18,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	TextEditorBox txtEdit;
 	Terminal terminal = new Terminal();
 	TetrisGame tetris = new TetrisGame();
-	Solitaire solitaire = new Solitaire();
+	SolitairePanel solitaire = new SolitairePanel();
 	ArrayList<JButton> buttons = new ArrayList<JButton>();
 	TextEditorButtonBar tebb;
 	String currentFolderPath = "";
@@ -78,7 +78,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				if(terminal.shouldExit())
 				{
 					s = Scene.FOLDER;
-					frame.setContentPane(desktop);
+					frame.setContentPane(currentFolder.getApp());
 					frame.repaint();
 					summer.repaint();
 				}
@@ -118,7 +118,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 			{
 				s = Scene.FOLDER;
 				tetris = new TetrisGame();
-				frame.setContentPane(desktop);
+				frame.setContentPane(currentFolder.getApp());
 				frame.repaint();
 				desktop.repaint();
 			}
@@ -151,6 +151,16 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 			
 			txtEditPanel.repaint();
 		}
+		else if(s == Scene.SOLITAIRE)
+		{
+			if((int)e.getKeyChar() == KeyEvent.VK_ESCAPE)
+			{
+				s = Scene.FOLDER;
+				frame.setContentPane(currentFolder.getApp());
+				frame.repaint();
+				desktop.repaint();
+			}
+		}
 		frame.validate();
 	}
 	
@@ -175,7 +185,6 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				Rectangle r = currentFolder.getFolderApp().getItems().get(i);
 				if(r.contains(e.getX()-8,e.getY()-30))
 				{
-					//frame.remove(desktop);
 					s = currentFolder.getFolderApp().getIcon(i).getScene();
 					switch(s)
 					{
@@ -192,6 +201,10 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 							new Thread(tetris).start();
 							break;
 						case SOLITAIRE:
+							frame.setContentPane(solitaire);
+							frame.repaint();
+							solitaire.repaint();
+							frame.validate();
 							break;
 						case TEXT_EDITOR:
 							txtEdit = new TextEditorBox(currentFolder.getFolderApp().getIcon(i).getFile(), frame.getWidth(),frame.getHeight());
@@ -208,7 +221,6 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 							frame.validate();
 							break;
 						default:
-							//frame.setContentPane(desktop);
 							frame.repaint();
 							desktop.repaint();
 					}
@@ -290,54 +302,3 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		}
 	}
 }
-
-/*CODE ARCHIVES
- *
- *
- *
-	
-	private void polygon(Graphics2D g, int[] x, int[] y, Color fill)
-	{
-		g.setColor(Color.BLACK);
-		g.setStroke(new BasicStroke(2));
-		g.drawPolygon(x,y,x.length);
-		g.setColor(fill);
-		g.fillPolygon(x,y,x.length);
-	}
-	
-	private void rect(Graphics2D g, int x, int y, int w, int h, Color fill)
-	{
-		g.setColor(Color.BLACK);
-		g.setStroke(new BasicStroke(2));
-		g.drawRect(x,y,w,h);
-		g.setColor(fill);
-		g.fillRect(x,y,w,h);
-	}
- *
- *
- *
- *
- *
-    	
-    //CURL AT BACK
-    int slope = (int)((double)-1/(DSLOPE));
-    int midX = (int)(CX + (double)CSX/2);
-    int midY = (int)(CY + CLH - (double)CH/2);
-    int midL = (int)Math.sqrt(Math.pow(CSX/2,2) + Math.pow(CH/2,2));
-    int radius = 100;
-    int lDist = (int)Math.sqrt(radius * radius - midL * midL);
-    int xCenter = midX - lDist*1;
- *
- *
- *
- *
- **/
- 		/*
-		 *
-		 *  rectPrism(g,CX,CY-CLH,CLW,DVO,CSX,CH,CC,d2(CC),b(CC));    	    	//TOP OF BACK
-    		rectPrism(g,CX,-CLH+CY,(int)(CLW*CBWF),CLH,(int)(CLW*CBWF),(int)(CSLY*CBWF),CC,d2(CC),b(CC));
-    		rectPrism(g,(CSX-(int)(CLW*CBWF))/2+CX,-CLH+(CH-DVO)/2+CY,(int)(CLW*CBWF),CLH,(int)(CLW*CBWF),(int)(CSLY*CBWF),CC,d2(CC),b(CC));
-    		rectPrism(g,CSX-(int)(CLW*CBWF)+CX,CH-CLH-DVO+CY,(int)(CLW*CBWF),CLH,(int)(CLW*CBWF),(int)(CSLY*CBWF),CC,d2(CC),b(CC));
-		 *
-		 *
-		 **/

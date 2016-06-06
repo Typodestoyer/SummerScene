@@ -30,6 +30,14 @@
 				<path>src</path>
 			</folderitem>
 			<fileitem>
+				<path>src\AbstractCardPile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\AlternatingCardPile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Application.java</path>
 				<folder>src</folder>
 			</fileitem>
@@ -38,7 +46,19 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
+				<path>src\Card.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\CardPile.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
 				<path>src\Command.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\Deck.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
@@ -51,6 +71,10 @@
 			</fileitem>
 			<fileitem>
 				<path>src\DesktopIcon.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\DiscardPile.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
@@ -78,7 +102,11 @@
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
-				<path>src\Solitaire.java</path>
+				<path>src\SolitaireGame.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\SolitairePanel.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>
@@ -91,6 +119,10 @@
 			</fileitem>
 			<fileitem>
 				<path>src\SummerScene.java</path>
+				<folder>src</folder>
+			</fileitem>
+			<fileitem>
+				<path>src\TargetCardPile.java</path>
 				<folder>src</folder>
 			</fileitem>
 			<fileitem>

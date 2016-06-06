@@ -47,4 +47,9 @@ public abstract class FileData {
 	}
 	public String getName(){return name;}
 	public Thumbnail getThumbnail(){return pic;}
+	
+	public String toString()
+	{
+		return (name + "\n" + pic + "\n" + app + "\n");
+	}
 }

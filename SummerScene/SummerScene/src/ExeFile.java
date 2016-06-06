@@ -17,12 +17,13 @@ public class ExeFile extends MyFile {
 	public ExeFile(String name, Thumbnail pic)
 	{
 		super(name, pic);
-		app = new TetrisGame();
+		app = new SolitairePanel();
 	}
 	
 	public ExeFile(String name, Thumbnail pic, Application app)
 	{
 		super(name, pic, app);
-	}    
+	}
+	
     
 }

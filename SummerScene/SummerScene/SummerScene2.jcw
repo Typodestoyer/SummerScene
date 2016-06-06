@@ -11,6 +11,9 @@
 	</users>
 	<projects>
 		<project>
+			<path>..\..\..\..\Projects (Comp Sci Club)\Solitaire Abstraction\KlondikeSolitaire\KlondikeSolitaire.jcp</path>
+		</project>
+		<project>
 			<path>SummerScene.jcp</path>
 		</project>
 	</projects>

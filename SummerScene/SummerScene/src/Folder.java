@@ -45,7 +45,6 @@ public class Folder extends FileData
     	return new Thumbnail(45,60,colors,shapes);
     }
     
-    //@Override
     public FolderApp getFolderApp()
     {
     	foldApp = (FolderApp)getApp();

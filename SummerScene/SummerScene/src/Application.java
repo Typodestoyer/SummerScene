@@ -25,5 +25,10 @@ public abstract class Application extends JPanel {
     	setSize(width, height);
     }
     
+    protected void paintComponent(Graphics g)
+    {
+    	super.paintComponent(g);
+    }
+    
     public abstract Scene getScene();
 }

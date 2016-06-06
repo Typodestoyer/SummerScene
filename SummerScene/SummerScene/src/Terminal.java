@@ -231,11 +231,9 @@ public class Terminal extends TextInputPanel
 			case "ls":
 				for(FileData f : currentFolder.getContents())
 				{
-					if(f.getName() != null)
-					{
-						addNewLine(f.getName(),"");
-					}
+					addNewLine(f.getName(),"");
 				}
+				break;
 			default:
 				addNewLine(c.response, "");
 		}
