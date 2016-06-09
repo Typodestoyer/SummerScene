@@ -130,8 +130,7 @@ public class TetrisGame extends Application implements ActionListener, Runnable
 	    		repaint();
  	   		}
  	   		//Here goes 
-		} while ((replay == 'y') || (replay == 'Y'));		
-		System.out.println("GG");		
+		} while ((replay == 'y') || (replay == 'Y'));
     	//SetConsoleTextAttribute( GetStdHandle( STD_OUTPUT_HANDLE ), 0x0F );
     	repaint();
 		
@@ -735,13 +734,16 @@ public class TetrisGame extends Application implements ActionListener, Runnable
 		switch(key)
 		{
 			case KeyEvent.VK_W:
+			case KeyEvent.VK_UP:
 				rotate();
 				break;
 			case KeyEvent.VK_A:
+			case KeyEvent.VK_LEFT:
 				if(checkLateralMovement(-1))
 					move(-1);
 				break;
 			case KeyEvent.VK_D:
+			case KeyEvent.VK_RIGHT:
 				if(checkLateralMovement(1))
 					move(1);
 				break;
@@ -751,19 +753,19 @@ public class TetrisGame extends Application implements ActionListener, Runnable
 					descend();
 				break;
 			case KeyEvent.VK_S:
+			case KeyEvent.VK_DOWN:
 				timerDrop.stop();
 				timerDrop = new javax.swing.Timer(SOFTDROPDELAY, this);
     			timerDrop.setInitialDelay(SOFTDROPDELAY);
     			timerDrop.start();
 				break;
 			default:
-				System.out.println("Key unknown!");
 		}
 		repaint();
 	}
 	public void keyReleased(KeyEvent e)
 	{
-		if(e.getKeyCode() == KeyEvent.VK_S)
+		if(e.getKeyCode() == KeyEvent.VK_S || e.getKeyCode() == KeyEvent.VK_DOWN)
 		{
 			timerDrop.stop();
 			timerDrop = new javax.swing.Timer(speed, this);
@@ -774,6 +776,10 @@ public class TetrisGame extends Application implements ActionListener, Runnable
 	public void keyTyped(KeyEvent e)
 	{
 		
+	}
+	public void keyPressed(KeyEvent e)
+	{
+		inputKey(e.getKeyCode());
 	}
 	public boolean checkDescent()
 	{

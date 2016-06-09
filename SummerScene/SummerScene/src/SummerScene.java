@@ -23,6 +23,9 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	TextEditorButtonBar tebb;
 	String currentFolderPath = "";
 	Folder currentFolder;
+	static final int XOFFSET = 5;
+	static final int YOFFSET = 25;
+	
 	
 	ArrayList<Application> apps = new ArrayList<Application>();
 	Summer summer = new Summer();
@@ -122,10 +125,6 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 				frame.repaint();
 				desktop.repaint();
 			}
-			else
-			{
-				tetris.inputKey((int)Character.toUpperCase(e.getKeyChar()));
-			}
 		}
 		else if(s == Scene.TEXT_EDITOR)
 		{
@@ -163,11 +162,23 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 		}
 		frame.validate();
 	}
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+		if(s == Scene.SOLITAIRE)
+		{
+			solitaire.keyPressed(e);
+		}
+		else if(s == Scene.TETRIS)
+		{
+			tetris.keyPressed(e);
+		}
+	}
 	
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		if(s==Scene.SUMMER && summer.getComputer().contains(e.getX()-8,e.getY()-30))
+		if(s==Scene.SUMMER && summer.getComputer().contains(e.getX()-XOFFSET,e.getY()-YOFFSET))
 		{
 			summer.unhighlight();
 			s = Scene.FOLDER;
@@ -183,7 +194,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 			for(int i = 0; i < currentFolder.getFolderApp().getItems().size(); i ++)
 			{
 				Rectangle r = currentFolder.getFolderApp().getItems().get(i);
-				if(r.contains(e.getX()-8,e.getY()-30))
+				if(r.contains(e.getX()-XOFFSET,e.getY()-YOFFSET))
 				{
 					s = currentFolder.getFolderApp().getIcon(i).getScene();
 					switch(s)
@@ -233,7 +244,7 @@ public class SummerScene extends KeyAdapter implements MouseListener, MouseMotio
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-		if(s==Scene.SUMMER && summer.getComputer().contains(e.getX()-8,e.getY()-30))
+		if(s==Scene.SUMMER && summer.getComputer().contains(e.getX()-XOFFSET,e.getY()-YOFFSET))
 		{
 			summer.highlight();
 		}

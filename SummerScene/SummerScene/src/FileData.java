@@ -13,19 +13,19 @@ import java.awt.event.*;
 
 public abstract class FileData {
 	String name;
-	Thumbnail pic;
+	Icon pic;
 	Application app;
 	public FileData()
 	{
 		this.name = "";
 		pic = new Thumbnail();
 	}
-    public FileData(String name, Thumbnail pic)
+    public FileData(String name, Icon pic)
     {
     	this.name = name;
     	this.pic = pic;
     }
-    public FileData(String name, Thumbnail pic, Application app)
+    public FileData(String name, Icon pic, Application app)
     {
     	this(name,pic);
     	this.app = app;
@@ -46,7 +46,7 @@ public abstract class FileData {
 		return app.getScene();
 	}
 	public String getName(){return name;}
-	public Thumbnail getThumbnail(){return pic;}
+	public Icon getThumbnail(){return pic;}
 	
 	public String toString()
 	{

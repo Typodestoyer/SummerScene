@@ -14,7 +14,6 @@ E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\ExeFile.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\FileData.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Folder.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\FolderApp.java
-E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\MyFile.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\Scene.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\SolitaireGame.java
 E:\Java\GitAttempt2\GitProjects\SummerScene\SummerScene\src\SolitairePanel.java

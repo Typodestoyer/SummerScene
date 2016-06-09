@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.net.*;
 
-public class SolitairePanel extends Application
+public class SolitairePanel extends Application implements KeyListener
 {
 	private static final int DECK_X = 20;
 	private static final int DECK_Y = 20;
@@ -122,8 +122,6 @@ public class SolitairePanel extends Application
 			targetsDisplay.get(i).addMouseListener(new MyMouseListener());
 			add(targetsDisplay.get(i));
 		}
-		
-		addKeyListener(new MyKeyListener());
 	}
 	
 	protected void paintComponent(Graphics g)
@@ -391,30 +389,28 @@ public class SolitairePanel extends Application
 			}
 		}
 	}
-	private class MyKeyListener implements KeyListener
+	public void keyPressed(KeyEvent e)
 	{
-		public void keyPressed(KeyEvent e)
+		int key = e.getKeyCode();
+		//System.out.println(KeyEvent.VK_R + " " + key);
+		if(key == KeyEvent.VK_R)
 		{
-			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_R)
-			{
-				game = new SolitaireGame();
-				//initDisplay();
-				winMessage.setVisible(false);
-				repaint();
-			}
-			if(key == KeyEvent.VK_Z)
-			{
-				
-			}
+			game = new SolitaireGame();
+			//initDisplay();
+			winMessage.setVisible(false);
+			repaint();
 		}
-		public void keyTyped(KeyEvent e)
+		if(key == KeyEvent.VK_Z)
 		{
 			
 		}
-		public void keyReleased(KeyEvent e)
-		{
-			
-		}
+	}
+	public void keyTyped(KeyEvent e)
+	{
+		
+	}
+	public void keyReleased(KeyEvent e)
+	{
+	
 	}
 }

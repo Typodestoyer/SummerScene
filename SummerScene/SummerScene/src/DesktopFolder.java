@@ -38,7 +38,7 @@ public class DesktopFolder extends Folder
     	
     	colors.add(Color.WHITE);
     	shapes.add(new Polygon(new int[]{0,0,45,45}, new int[]{0,60,60,0}, 4));
-    	add(new ExeFile("Solitaire", new Thumbnail(45,60,colors, shapes), apps.remove(0)));
+    	add(new ExeFile("Solitaire", new ImageIcon("7clubs.GIF"), apps.remove(0)));
     	
     	colors = new ArrayList<Color>();
     	shapes = new ArrayList<Polygon>();
